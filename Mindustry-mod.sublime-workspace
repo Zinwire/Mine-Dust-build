@@ -1,0 +1,448 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"shoot",
+				"shootSound"
+			],
+			[
+				"li",
+				"liquidCapacity"
+			],
+			[
+				"c",
+				"category"
+			],
+			[
+				"ta",
+				"targetGround"
+			],
+			[
+				"sta",
+				"statusDuration"
+			],
+			[
+				"a",
+				"ammoMultiplier"
+			],
+			[
+				"am",
+				"ammoMultiplier"
+			],
+			[
+				"pie",
+				"pierceCap"
+			],
+			[
+				"ra",
+				"railgun"
+			],
+			[
+				"lu",
+				"liquids"
+			],
+			[
+				"liq",
+				"liquids"
+			],
+			[
+				"l",
+				"liquids"
+			],
+			[
+				"re",
+				"requirements"
+			],
+			[
+				"he",
+				"health"
+			],
+			[
+				"d",
+				"description"
+			],
+			[
+				"i",
+				"itemCapacity"
+			],
+			[
+				"has",
+				"hasItems"
+			],
+			[
+				"Molten",
+				"Molten-Copper"
+			],
+			[
+				"Draw",
+				"DrawLiquidRegion"
+			],
+			[
+				"pi",
+				"pierceCap"
+			],
+			[
+				"ho",
+				"homingPower"
+			],
+			[
+				"hom",
+				"homingPower"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Install Package Control"
+			],
+			[
+				"",
+				"Bookmarks: Select All"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/turrets",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/sprites"
+	],
+	"file_history":
+	[
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/п.sublime-project",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa4568.30388/accel.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/turrets/Railgun.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/turrets/Sharpshooter.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa4568.27714/sunflare.hjson",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa4568.16981/mortar.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Pluto-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Diamond-Forge-T2.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/production/Uran-Bur.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/vanila+/Pyratite-Synthesizer.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/units/Sound-Shooter-T2.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa4568.37319/plastanium-wall-2.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/turrets/Middle-Gun.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Copper-Smelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Lead-Smelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Bronze-Forge.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa4568.9724/accel.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/turrets/Flamethrower.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa2368.40580/accel.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/units/Sound-Shooter-T1.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/units/T3-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/units/T4-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/items/Diamond.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/items/Uranium.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Diamond-Forge.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/crafting/Steel-Forge.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/units/T2-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/units/Unit-Factory.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa2368.145/living-steel-forge.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa2368.3154/steam-turbine.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine-dust/content/blocks/power/generators/Gas-Gen.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/mod.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/units/Sound-Shooter-T4.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/units/Sound-Shooter-T3.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/units/Sound-Shooter-T2.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/turrets/Hardened (2).json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/production/Gas-Station.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/turrets/Flamethrower.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/units/T2-Factory.json",
+		"/C/Users/User/Desktop/майн дуст резерв/content/blocks/turrets/Hardened (2).json",
+		"/C/Users/User/Downloads/AyuGram Desktop/Hardened (2).json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa9632.16716/steam-turbine.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/power/generators/Gas-Gen.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/units/T3-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/units/T4-Factory.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa11064.37962/progressive-reassembly-chamber.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/blocks/units/Unit-Factory.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa11064.18931/primary-factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/MineDustAlpha/content/units/Sound-Shooter-T1.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/units/Sound-Shooter-T2.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/units/Sound-Shooter-T1.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8760.37148/living-steel.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8760.17751/primary-factory.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8760.6621/progressive-reassembly-chamber.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8760.27457/progressive-reassembly-chamber.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Middle-Gun.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Flamethrower.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Gin.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/units/test.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/crafting/Copper-Smelter.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5384.5807/steam-turbine.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/power/generators/Gas-Gen.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/liquids/Molten-Lead.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5384.48529/amalgam-smelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/power/generators/Gas-Generator.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5384.26050/induced-kiln.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5384.44242/basic-multismelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/crafting/Bronze-Forge.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa6084.571/sambuca.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5384.30374/mod.hjson",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/mod.json",
+		"/C/Users/User/Desktop/Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/production/Uran-Bur.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/liquids/Gas.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/production/Gas-Station.json",
+		"/C/Users/User/Desktop/Liquid.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/liquids/Molten-Copper.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Irradiator.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Firethrower.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/crafting/Pluto-Factory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/crafting/Lead-Smelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/walls/Bronze-Wall.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/walls/Steel-Wall.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/walls/2Steel-Wall.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/walls/2Bronze-Wall.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa10180.1052/shotgun.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/Hardened (2).json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/Items/Plutonium.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa9156.34222/turret.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa9516.32062/Diamond.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/Items/Steel.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5796.14531/Diamond.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa2436.11884/mod.json",
+		"/C/Users/User/Desktop/Item.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8400.18771/gattling.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa1116.27608/accel.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/Pluto-Factory.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8400.30583/gattling.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/turrets/hh.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa1116.20274/gattling.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/status/Radiation-Y.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa5244.34410/radiated.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/status/RadiantY.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa10992.8868/super-hastened.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/Items/Bronze.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/Steel-Forge.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/Bronze-Forge.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa10556.2119/1a-f-surge-smelter-iii.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/Items/Uran.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/Lead-Smelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/Mine dust/content/blocks/Copper-Smelter.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa8800.45607/1a-f-surge-smelter-iii.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa11596.43719/1a-f-surge-smelter-ii.json",
+		"/C/Users/User/AppData/Local/Temp/Rar$DIa11596.20157/1a-f-surge-smelter-ii.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/liquids/Molten-Lead.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/mod.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/smart-melter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/scripts/smart-melter.js",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/SmartMelter.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/liquids/molten-copper.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/UranBur.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/Items/Plutonium.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/Items/Uran.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/PlutoFactory.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/drills/UranBur.json",
+		"/C/Games/Mindustry Build 146/saves/mods/uran/content/blocks/drills/UB.json",
+		"/C/Users/User/Desktop/uran/mod.json",
+		"/C/Users/User/Desktop/Uranium dristna/content/Items/Uran.json"
+	],
+	"find":
+	{
+		"height": 47.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			",\n",
+			"PointBulletType",
+			"type",
+			"ItemTurret",
+			"type",
+			"DrawMulti",
+			"effect",
+			"impact",
+			"name",
+			"hitSize",
+			"shootSound",
+			"Эзшуксу",
+			"shots",
+			"name",
+			"type",
+			"consumes",
+			"power",
+			"type",
+			"rotate",
+			"x",
+			"reload",
+			"name",
+			"type",
+			"shootSound",
+			"liquid",
+			"coolant",
+			"consumes",
+			"lifetime",
+			"type",
+			"speed",
+			"damage",
+			"type",
+			"inaccuracy",
+			"type",
+			"wall",
+			"\t\n",
+			"type",
+			"lifetime",
+			"name",
+			"makeFire",
+			"fireChance",
+			"shootShake",
+			"Y",
+			"ContinuousLaserBulletType",
+			"size",
+			"layer",
+			"water"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 47.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "Mindustry-mod.sublime-project",
+	"replace":
+	{
+		"height": 90.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

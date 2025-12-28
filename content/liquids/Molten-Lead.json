@@ -1,0 +1,11 @@
+{
+ "name": "Molten Lead",
+ "description": "Liquid lead form",
+ "color": "#A6AAB4FF",
+ "flammability": 0,
+ "temperature": 1,
+ "heatCapacity": 0,
+ "viscosity": 0.75,
+ "explosiveness": 0,
+ "lightColor": "#1F51FF",
+}

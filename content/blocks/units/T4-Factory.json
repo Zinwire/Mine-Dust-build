@@ -1,0 +1,35 @@
+{
+	"type": "Reconstructor",
+	"name": "T4 Builder",
+	"description": "Rebuild t3 units to t4",
+	"health": 1488,
+	"size": 6,
+	"constructTime": 10800,
+	"upgrades": [
+		["Sound-Shooter-T3", "Sound-Shooter-T4"]
+	],
+	"consumes": {
+		"power": 25,
+		"items": {
+			"items": [
+				"silicon/210",
+				"Diamond/300",
+				"Steel/190",
+				"Plutonium/30"
+			]
+		},
+		"liquids": {
+			"liquids": [
+				{"liquid": "water", "amount": 1.5}
+			]
+		}
+	},
+	"requirements": [
+		"silicon/359",
+		"titanium/500"
+		"Steel/190",
+		"thorium/500",
+		"phase-fabric/120"
+	],
+	"category": "units"
+}

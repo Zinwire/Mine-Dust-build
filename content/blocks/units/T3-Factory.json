@@ -1,0 +1,30 @@
+{
+	"type": "Reconstructor",
+	"name": "T3 Builder",
+	"description": "Rebuild t2 units to t3",
+	"health": 777,
+	"size": 4,
+	"constructTime": 4800,
+	"upgrades": [
+		["Sound-Shooter-T2", "Sound-Shooter-T3"]
+	],
+	"consumes": {
+		"power": 10,
+		"items": {
+			"items": [
+				"silicon/130",
+				"titanium/150",
+				"Steel/90",
+				"Uranium/21"
+			]
+		}
+	},
+	"requirements": [
+		"silicon/200",
+		"titanium/220"
+		"Diamond/120"
+		"Steel/110",
+		"thorium/200"
+	],
+	"category": "units"
+}

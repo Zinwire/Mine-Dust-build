@@ -1,0 +1,45 @@
+{
+	"type": "ItemTurret",
+	"name": "Sharpshooter",
+	"description": "Shoots like good sniper, but ignore blocks",
+	"size": 3,
+	"health": 450,
+	"range": 400,
+	"reload": 300,
+	"ammoPerShot": 5,
+	"shootSound": "StrongShoot",
+	"consumes": {
+		"coolant": {
+			"amount": 0.4,
+			"coolingMultiplier": 0.25,
+		}
+	},
+	"ammoTypes": {
+		"titanium": {
+			"type": "RailBulletType",
+			"damage": 250,
+			"length": 401
+		},
+		"Diamond": {
+			"type": "RailBulletType",
+			"damage": 350,
+			"length": 401
+		},
+		"thorium": {
+			"type": "RailBulletType",
+			"damage": 400,
+			"length": 401,
+			"status": "Radiation-Y",
+			"statusDuration": 36000
+		}
+	},
+	"requirements": [
+		"titanium/400",
+		"Steel/230",
+		"graphite/230",
+		"Diamond/120",
+		"thorium/350"
+	],
+	"targetAir": true, "targetBlocks": false, "targetGround": true, "hasLiquids": true, "liquidCapacity": 33,
+	"category": "turret",
+}
