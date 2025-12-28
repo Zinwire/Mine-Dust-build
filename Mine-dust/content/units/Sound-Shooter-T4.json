@@ -1,0 +1,76 @@
+{
+	"name": "Godfather",
+	"type": "mech",
+	"speed": 0.8,
+	"hitSize": 19,
+	"health": 6800,
+	"flying": false,
+	"armor": 1.4,
+	"weapons": [
+		{
+			"name": "Soundshooter",
+			"x": 7,
+			"reload": 20,
+			"shootSound": "SoundWaveShoot",
+			"bullet": {
+				"type": "BasicBulletType",
+				"damage": 75,
+				"sprite": "md-SoundWave",
+				"speed": 8,
+				"width": 24,
+				"height": 16,
+				"pierce": true,
+				"pierceBuilding": true,
+				"lifetime": 15,
+				"knockback": 2.5,
+				"impact": true
+			},
+			"shoot": {
+				"type": "ShootAlternate",
+				"shots": 3,
+			}
+			
+			
+		},
+		{
+			"name": "Homage",
+			"x": 6,
+			"reload": 90,
+			"shootSound": "StrongShoot",
+			"mirror": false,
+			"bullet": {
+				"type": "BasicBulletType",
+				"sprite": "md-N",
+				"speed": 10,
+				"damage": 850,
+				"knockback": 60,
+				"width": 10,
+				"height": 10,
+				"hitSize": 20,
+				"lifetime": 4,
+				"impact": true
+			}
+		},
+		{
+			"name": "Crook",
+			"x": -6,
+			"reload": 120,
+			"shootSound": "none",
+			"mirror": false,
+			"bullet": {
+				"type": "BasicBulletType",
+				"sprite": "md-N",
+				"speed": 6,
+				"lifetime": 25,
+				"knockback": -120,
+				"width": 6,
+				"height": 10,
+				"damage": 1,
+				"impact": true,
+				"status": "burning",
+					"statusDuration": 900,
+			}
+		}
+	]
+
+}

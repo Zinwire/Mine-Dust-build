@@ -1,0 +1,27 @@
+{
+	"name": "Urod",
+	"type": "mech",
+	"speed": 0.5,
+	"hitSize": 8, 
+	"health": 200, 
+	"flying": false,
+	"range": 80,
+	"weapons": [
+		{
+			"name": "main",
+			"x": 10,
+			"y": 0,
+			"rotate": true,
+			"mirror": true,
+			"bullet": {
+				"type": "BasicBulletType", 
+        		"damage": 15,
+        		"speed": 4,
+        		"width": 5,
+        		"height": 7,
+        		"lifetime": 60
+			},
+		},
+	]
+
+}

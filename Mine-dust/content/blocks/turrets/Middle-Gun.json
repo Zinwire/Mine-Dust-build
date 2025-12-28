@@ -1,0 +1,61 @@
+{
+	"type": "ItemTurret",
+	"name": "Middle Gun",
+	"health": 450,
+	"size": 2,
+	"range": 152,
+	"targetAir": true,
+	"targetGround": true,
+	"hasLiquids": true,
+	"liquidCapacity": 24, 
+	"reload": 4,
+	"consumes": {
+		"coolant": {
+		"amount": 0.2,
+		"optional": true,
+		}
+	},
+	"inaccuracy": 10,
+	"requirements": [
+	"copper/100",
+	"lead/80",
+	"Bronze/60"
+	"Steel/40",
+	],
+	"ammoTypes": {
+		"lead": {
+			"type": "BasicBulletType",
+    		"damage": 11,
+    		"speed": 4,
+    		"lifetime": 40,
+    		"width": 7,
+        	"height": 9,
+    		"ammoMultiplier": 4,
+    		"pierce": true,
+    		"pierceCap": 4
+		},
+		"coal": {
+			"type": "BasicBulletType",
+			"damage": 8,
+        	"speed": 4.5,
+        	"lifetime": 35,
+        	"width": 7,
+        	"height": 9,
+        	"ammoMultiplier": 4,
+        	"status": "burning",
+        	"statusDuration": 600
+		},
+		"Bronze": {
+			"type": "BasicBulletType",
+        	"damage": 26,
+        	"speed": 5,
+        	"lifetime": 31,
+        	"width": 7,
+        	"height": 9,
+       		"ammoMultiplier": 6,
+        	"pierce": true,
+        	"pierceCap": 2
+		}
+	},
+	"category": "turret",
+}

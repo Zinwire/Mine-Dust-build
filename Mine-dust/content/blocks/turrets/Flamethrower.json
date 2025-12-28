@@ -1,0 +1,51 @@
+{
+	"type": "PowerTurret",
+	"name": "Flamethrower",
+	"description": "Shoots flame to enemies",
+	"size": 3,
+	"hasItems": false,
+	"hasPower": true,
+	"reload": 0.5,
+	"rotate": 40,
+	"loopSound": "shootSublimate",
+	"shootSound": "none",
+	"shootY": 18,
+	"outlineRadius": 0.2,
+	"consumes": {
+		"liquids": {
+			"liquids": [
+				{"liquid": "Gas", "amount": 0.3}
+			]
+		}
+			
+	},
+	"shootType": {
+		"type": "BasicBulletType",
+		"damage": 15,
+		"pierce": true,
+		"lifetime": 30,
+		"sprite": "md-FlameBullet",
+		"speed": 5,
+		"width": 16,
+		"height": 16,
+		"backColor": "6666ff",
+		"status": "burning",
+        	"statusDuration": 900,
+	},
+	"range": 130,
+	"health": 350,
+	"targetAir": true,
+  	"targetGround": true,
+  	"hasLiquids": true,
+  	"liquidCapacity": 10,
+  	"inaccuracy": 20,
+  	"requirements": [
+  		"lead/110",
+		"graphite/55",
+		"Steel/40",
+		"titanium/50",
+  	],
+  	"category": "turret",
+
+}
+

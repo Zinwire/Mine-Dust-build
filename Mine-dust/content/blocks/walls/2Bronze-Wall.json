@@ -1,0 +1,11 @@
+{
+	"type": "Wall",
+	"name": "Big bronze wall",
+	"description": "Defense I think",
+	"health": 1800,
+	"size": 2,
+	"requirements": [
+		"Bronze/24"
+	],
+	"category": "defense",
+}

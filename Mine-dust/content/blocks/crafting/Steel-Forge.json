@@ -1,0 +1,33 @@
+{
+  "type": "GenericCrafter",
+  "name": "Steel Forge",
+  "description": "Crafting Steel",
+  "health": 500,
+  "size": 2,
+  "requirements": [
+    "copper/120",
+    "lead/60",
+    "graphite/30",
+  ],
+  "hasPower": true,
+  "hasItems": true,
+  "hasLiquids": true,
+  "craftTime": 45,
+  "consumes": {
+    "power": 3,
+    "items": {
+      "items": [
+        "coal/2"
+      ]
+    },
+    "liquids": {
+      "liquids": [
+        {"liquid": "Molten-Lead", "amount": 0.1}
+      ]
+    }
+  },
+  "category": "crafting",
+  "itemCapacity": 20,
+  "liquidCapacity": 30,
+  "outputItem": "Steel/1"
+}

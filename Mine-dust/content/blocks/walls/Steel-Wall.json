@@ -1,0 +1,11 @@
+{
+    "name": "Steel Wall",
+    "description": "Defense I think",
+    "health": 550,
+    "size": 1,
+    "type": "Wall",
+    "requirements": [
+        "Steel/6"
+    ],
+    "category": "defense",
+}

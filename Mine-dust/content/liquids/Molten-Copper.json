@@ -1,0 +1,11 @@
+{
+ "name": "Molten Copper",
+ "description": "Liquid copper form",
+ "color": "#FFA11B",
+ "flammability": 0,
+ "temperature": 1.24,
+ "heatCapacity": 0,
+ "viscosity": 0.75,
+ "explosiveness": 0,
+ "lightColor": "#FFA11B"
+}

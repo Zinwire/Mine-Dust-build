@@ -1,0 +1,37 @@
+{
+	"name": "IPad Kid",
+	"description": "Shoots sound wave to enemies",
+	"type": "mech",
+	"speed": 1,
+	"hitSize": 8,
+	"health": 350,
+	"flying": false,
+	"range": 80,
+	"weapons": [
+		{
+			"name": "Soundshooter",
+			"x": 6,
+			"mirror": true,
+			"reload": 30,
+			"shootSound": "SoundWaveShoot",
+			"bullet": {
+				"type": "BasicBulletType",
+				"damage": 20,
+				"sprite": "md-SoundWave",
+
+				"speed": 8,
+				"width": 15,
+				"height": 6,
+				"pierce": true,
+				"pierceBuilding": true,
+				"lifetime": 15
+			},
+			"shoot": {
+				"type": "ShootAlternate",
+				"shots": 2,
+			}
+			
+			
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"name": "Radiation Y",
+	"damage": 0.1,
+	"alwaysUnlocked": true,
+	"effect": "heal",
+	"effectChance": 0.01
+}
