@@ -14,21 +14,27 @@
     "items": {
       "items": [
         "graphite/2",
-      ]
-    },
-  },
-    "images": [
-    {"name": "main", "file": "Dimond-forge.png"},
-    {"name": "wet", "file": "Dimond-forge_wet.png"}
-  ],
-  "behaviors": [
-    {"type": "LiquidInteraction", "liquid": "water", "triggerTexture": "wet"}
-    ],
+  "drawer": {
+    "type": "DrawMulti",
+    "drawers": [
+      {
+        "type": "DrawDefault"
+      },
+      {
+        "type": "DrawLiquidRegion",
+        "drawLiquid": "water",
+        "suffix": "-liquid"
+      },
+      {
+        "type": "DrawRegion",
+        "suffix": "-top"
+      }
+    ]
+  }
   "outputItem": "Diamond/1",
   "hasLiquids": true, "hasPower": true, "hasItems": true,
   "craftTime": 90,
   "liquidCapacity": 30,
   "itemCapacity": 20,
   "category": "crafting"
-  
 }
