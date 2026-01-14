@@ -14,6 +14,9 @@
     "items": {
       "items": [
         "graphite/2",
+               ]
+             }
+              }
   "drawer": {
     "type": "DrawMulti",
     "drawers": [
@@ -25,10 +28,6 @@
         "drawLiquid": "water",
         "suffix": "-water"
       },
-      {
-        "type": "DrawRegion",
-        "suffix": "-top"
-      }
     ]
   }
   "outputItem": "Diamond/1",
