@@ -23,7 +23,7 @@
       {
         "type": "DrawLiquidRegion",
         "drawLiquid": "water",
-        "suffix": "-liquid"
+        "suffix": "-water"
       },
       {
         "type": "DrawRegion",
