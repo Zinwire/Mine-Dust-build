@@ -1,8 +1,7 @@
-Events.on(UnitDestroyEvent, event => {
-    if (event.unit.team === Team.crux) {
-        
-        let message = "[scarlet]Враг уничтожен:[] " + event.unit.type.localizedName;
-        
-        Vars.ui.hudfrag.showToast(Icon.ok, message);
-    }
+Events.on(ClientLoadEvent, () => {
+
+    Vars.ui.hudfrag.showToast(
+        Icon.info,             // Иконка слева
+        "Мод успешно запущен!" // Текст уведомления
+    );
 });
