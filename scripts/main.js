@@ -1,9 +1,8 @@
-
-//КлиентЛоадИвент это при загрузке игры на главном экране
-Events.on(ClientLoadEvent, () => {
-//Мини сообщение показать тут
-	Vars.ui.hudfrag.showToast(
-		Icon.info,
-		"Скрипт на удивление работает"
-	);
+Events.on(UnitDestroyEvent, event => {
+    if (event.unit.team === Team.crux) {
+        
+        let message = "[scarlet]Враг уничтожен:[] " + event.unit.type.localizedName;
+        
+        Vars.ui.hudfrag.showToast(Icon.sword, message);
+    }
 });
