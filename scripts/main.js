@@ -3,6 +3,6 @@ Events.on(UnitDestroyEvent, event => {
         
         let message = "[scarlet]Враг уничтожен:[] " + event.unit.type.localizedName;
         
-        Vars.ui.hudfrag.showToast(Icon.sword, message);
+        Vars.ui.hudfrag.showToast(Icon.ok, message);
     }
 });
