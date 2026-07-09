@@ -1,4 +1,4 @@
-Events.on(PlayEvent, () => {
+Events.on(ClientLoadEvent, () => {
     // Метод принимает: (Заголовок, Основной текст)
     Vars.ui.showText(
         "[scarlet]ВАЖНОЕ ОБЪЯВЛЕНИЕ[]", 
