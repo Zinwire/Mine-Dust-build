@@ -1,3 +1,6 @@
-Events.on(ClientLoadEvent, () => {
-    Vars.ui.showInfoFade("Мод успешно загружен и готов!");
+Events.on(PlayEvent, () => {
+    Vars.ui.hudfrag.showAnnouncement(
+        "[scarlet] ВНИМАНИЕ: СИСТЕМА ПЕРЕГРУЖЕНА []", 
+        5.5 // Время отображения в секундах
+    );
 });
