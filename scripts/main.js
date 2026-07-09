@@ -1,6 +1,6 @@
 
 //КлиентЛоадИвент это при загрузке игры на главном экране
-Events.On(ClientLoadEvent, () => {
+Events.on(ClientLoadEvent, () => {
 //Создаю впринцепи окно(диалог)
 	const window = new BaseDialog("Тест");
 //Добавляю в "контейнер" окна текст
