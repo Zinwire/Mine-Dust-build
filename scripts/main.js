@@ -25,15 +25,15 @@ Events.on(ClientLoadEvent, () => {
     welcomeDialog.buttons.defaults().size(210, 50).pad(10);
 
 //Кнопка гитхаба мода
-    welcomeDialog.buttons.button(Icon.github.ui(), "Ссылка на GitHub мода", () => {
+    welcomeDialog.buttons.button(Icon.github., "Ссылка на GitHub мода", () => {
     Core.net.openURI("https://github.com/Zinwire/Mine-Dust")});
 
 //Кнопка закрытия окна
-    welcomeDialog.buttons.button(Icon.ok.ui(), "Хорошо", () => {
+    welcomeDialog.buttons.button(Icon.ok, "Хорошо", () => {
     welcomeDialog.hide();});
 
 //Кнопка перехода в телеграм канал мода
-    welcomeDialog.buttons.button(Icon.link.ui(), "Ссылка на Telegram мода", () => {
+    welcomeDialog.buttons.button(Icon.link, "Ссылка на Telegram мода", () => {
     Core.net.openURI("https://t.me/MineDustMod");});
 
 //Показываю окно
