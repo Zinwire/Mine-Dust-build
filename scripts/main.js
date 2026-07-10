@@ -28,11 +28,13 @@ Events.on(ClientLoadEvent, () => {
                     
                     () => {
                         // Нажал "GitHub"
-                        Core.net.openURI("https://github.com/Zinwire/Mine-Dust");
+                        //Core.net.openURI("https://github.com/Zinwire/Mine-Dust");
+                        arc.util.OS.openURI("https://github.com/Zinwire/Mine-Dust");
                     },
                     () => {
                         // Нажал "Telegram"
-                        Core.net.openURI("https://t.me/MineDustMod");
+                        //Core.net.openURI("https://t.me/MineDustMod");
+                        arc.util.OS.openURI("https://t.me/MineDustMod");
                     }
                 );
             },
