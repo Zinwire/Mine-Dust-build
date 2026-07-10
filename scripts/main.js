@@ -25,7 +25,7 @@ Events.on(ClientLoadEvent, () => {
     welcomeDialog.buttons.defaults().size(210, 50).pad(10);
 
 //Кнопка гитхаба мода
-    welcomeDialog.buttons.button(Icon.github., "Ссылка на GitHub мода", () => {
+    welcomeDialog.buttons.button(Icon.github, "Ссылка на GitHub мода", () => {
     Core.net.openURI("https://github.com/Zinwire/Mine-Dust")});
 
 //Кнопка закрытия окна
