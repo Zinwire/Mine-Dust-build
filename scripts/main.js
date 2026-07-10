@@ -1,28 +1,21 @@
 Events.on(ClientLoadEvent, () => {
 
-    // Создаем диалог
-    const welcomeDialog = new BaseDialog("");
+    // 1. Создаем ванильное, идеально отцентрированное окно с красивой полупрозрачной подложкой
+    // Метод showText принимает два параметра: (Заголовок, Текст)
+    // Мы передаем пустые строки, так как добавим их сами для точного контроля стилей!
+    const welcomeDialog = Vars.ui.showText("", "");
 
-    // 🔥 ЖЕСТКОЕ ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ:
-    // Заставляем окно занять весь экран как невидимый контейнер и центрируем всё содержимое
-    welcomeDialog.setFillParent(true);
-    welcomeDialog.center();
+    // 2. Находим внутренний контейнер контента окна (cont) и очищаем его от пустоты
+    welcomeDialog.cont.clearChildren();
 
-    // Добавляем красивое размытие/затемнение заднего плана (как у всех окон игры)
-    welcomeDialog.setBackground(Styles.black9); 
+    // 3. Добавляем заголовок прямо по центру контейнера
+    welcomeDialog.cont.add("[cyan]Приветствуем вас в моде![]").padTop(10).row();
 
-    // Создаем внутреннюю рамку (плашку) для нашего контента, чтобы у окна были границы
-    // Используем стандартный полупрозрачный темный стиль Mindustry
-    let dialogTable = welcomeDialog.cont.table(Styles.black6).pad(20).get();
+    // 4. Добавляем жёлтую разделительную полосу
+    welcomeDialog.cont.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
 
-    // 1. Заголовок (добавляем внутрь нашей рамки dialogTable)
-    dialogTable.add("[cyan]Приветствуем вас в моде![]").padTop(15).row();
-
-    // 2. Жёлтая полоса под заголовком
-    dialogTable.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
-
-    // 3. Сам текст сообщения
-    let cell = dialogTable.add(
+    // 5. Добавляем ваш текст сообщения
+    let cell = welcomeDialog.cont.add(
         "[orange]Я, один из разработчиков мода Mine Dust приветствую вас в моде![]\n\n" +
         "Мод пока-что находится в бете, поэтому могут встречаться блоки/предметы без текстур, и баги :)\n\n" +
         "Если вам нравится задумка, а может и реализация мода, вы можете поддержать его разработку, " +
@@ -30,31 +23,28 @@ Events.on(ClientLoadEvent, () => {
         "[accent]Это сообщение можно выключить в настройках игры[]"
     );
     
-    cell.width(650); // Ограничиваем ширину текста
-    cell.wrap();     // Включаем автоматический перенос длинных строк
-    cell.center();   // Выравниваем текст по центру
+    // Задаем жесткие лимиты тексту, чтобы игра ПРИНУДИТЕЛЬНО переносила строки и не растягивала окно
+    cell.width(600); // Идеальная ширина для читаемости
+    cell.wrap();     // Включаем автоперенос строк
+    cell.center();   // Центрируем текст внутри блока
     cell.row();
 
-    // --- Настройка нижних кнопок ---
-    // Добавляем строку для кнопок прямо внутрь нашей рамки, снизу под текстом
-    let buttonRow = dialogTable.table().padTop(20).get();
-    buttonRow.defaults().size(250, 50).pad(10);
+    // 6. Находим контейнер кнопок (buttons) и полностью пересобираем его под 3 кнопки
+    welcomeDialog.buttons.clearChildren();
+    welcomeDialog.buttons.defaults().size(240, 50).pad(10); // Чуть увеличили ширину кнопок
 
-    // Кнопка гитхаба мода
-    buttonRow.button(Icon.github, "GitHub мода", () => {
-        Core.net.openURI("https://github.com/Zinwire/Mine-Dust");
+    // Кнопка GitHub
+    welcomeDialog.buttons.button(Icon.github, "GitHub мода", () => {
+        Core.net.openURI("https://github.com");
     });
 
-    // Кнопка закрытия окна
-    buttonRow.button(Icon.ok, "Хорошо", () => {
+    // Кнопка ОК (Хорошо)
+    welcomeDialog.buttons.button(Icon.ok, "Хорошо", () => {
         welcomeDialog.hide();
     });
 
-    // Кнопка перехода в телеграм канал мода
-    buttonRow.button(Icon.link, "Telegram мода", () => {
-        Core.net.openURI("https://t.me/MineDustMod");
+    // Кнопка Telegram
+    welcomeDialog.buttons.button(Icon.link, "Telegram мода", () => {
+        Core.net.openURI("https://t.me");
     });
-
-    // Показываем окно
-    welcomeDialog.show();
 });
