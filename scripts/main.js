@@ -1,25 +1,23 @@
 Events.on(ClientLoadEvent, () => {
 
-    const welcomeDialog = new Dialog("");
+    // 1. Создаем стандартный диалог. 
+    // Название оставляем пустым, чтобы не было лишних ванильных рамок.
+    const welcomeDialog = new BaseDialog("");
 
-    // 📏 Увеличиваем высоту окна (было 480, стало 580), чтобы текст не налезал на кнопки
-    welcomeDialog.setSize(680, 580);
+    // 2. Очищаем контент окна, если там что-то было
+    welcomeDialog.cont.clearChildren();
 
-    // 🎯 ЦЕНТРИРОВАНИЕ НА УРОВНЕ СЕТКИ:
-    // Создаем ячейку в контейнере cont, растягиваем её на всё окно (.fill) 
-    // и принудительно выравниваем строго по центру (.center)
-    let mainCell = welcomeDialog.cont.add().fill().center();
-    
-    // Создаем нашу красивую серую подложку-рамку внутрь этой центрированной ячейки
-    let mainTable = mainCell.table(Styles.black6).pad(15).get();
+    // 3. Создаем красивую серую подложку-рамку (Table) напрямую через конструктор
+    let mainTable = new Table(Styles.black6);
 
-    // 1. Заголовок мода
-    mainTable.add("[cyan]Приветствуем вас в моде![]").padTop(10).row();
+    // НАПОЛНЯЕМ НАШУ РАМКУ (mainTable)
+    // Заголовок мода
+    mainTable.add("[cyan]Приветствуем вас в моде![]").padTop(15).row();
 
-    // 2. Жёлтая разделительная полоса
+    // Жёлтая разделительная полоса
     mainTable.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
 
-    // 3. Сам текст сообщения
+    // Сам текст сообщения
     let textCell = mainTable.add(
         "[orange]Я, один из разработчиков мода Mine Dust приветствую вас в моде![]\n\n" +
         "Мод пока-что находится в бете, поэтому могут встречаться блоки/предметы без текстур, и баги :)\n\n" +
@@ -28,16 +26,18 @@ Events.on(ClientLoadEvent, () => {
         "[accent]Это сообщение можно выключить в настройках игры[]"
     );
     
-    textCell.width(600); // Ограничиваем текст по ширине рамки
-    textCell.wrap();     // Включаем автоперенос длинных строк
-    textCell.center();   // Выравниваем текст по центру плашки
+    textCell.width(600); // Идеальная ширина, чтобы текст красиво переносился
+    textCell.wrap();     // Автоперенос строк
+    textCell.center();   // Выравнивание текста по центру
     textCell.row();
 
-    // 4. Пересобираем область нижних кнопок
+    // 4. Добавляем нашу готовую рамку со всеми элементами в центр главного окна игры
+    // Метод .center() здесь выровняет всю готовую таблицу строго по центру экрана!
+    welcomeDialog.cont.add(mainTable).center().pad(20);
+
+    // 5. Пересобираем область нижних кнопок
     welcomeDialog.buttons.clearChildren();
-    
-    // Сделали кнопки чуть компактнее (200), чтобы три штуки идеально встали в ряд внутри ширины 680
-    welcomeDialog.buttons.defaults().size(200, 50).pad(10); 
+    welcomeDialog.buttons.defaults().size(210, 50).pad(10); // Оптимальный размер, чтобы три кнопки влезли в ряд
 
     // Кнопка GitHub мода
     welcomeDialog.buttons.button(Icon.github, "GitHub мода", () => {
@@ -54,6 +54,6 @@ Events.on(ClientLoadEvent, () => {
         Core.net.openURI("https://t.me");
     });
 
-    // Показываем окно. Теперь оно железно встанет посередине.
+    // Показываем готовое центрированное окно
     welcomeDialog.show();
 });
