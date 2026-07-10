@@ -13,4 +13,6 @@ welcomeDialog.titleTable.add("[cyan]Приветствие мода![]").pad(10)
 
 welcomeDialog.titleTable.image().color(Pal.accent).height(3).fillX().padTop(5);
 
+welcomeDialog.show();
+
 });
