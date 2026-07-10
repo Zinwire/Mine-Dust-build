@@ -1,59 +1,57 @@
 Events.on(ClientLoadEvent, () => {
-    // 1. Вызываем железно работающее ванильное окно. 
-    // Заголовок и текст оставляем пустыми, мы добавим их через мгновение.
-    Vars.ui.showText("", "");
 
-    // 2. Откладываем выполнение на 1 тик, чтобы игра успела создать окно в памяти
-    Time.run(1, () => {
-        // Находим последнее открытое окно на экране
-        let dialogs = Core.scene.getDialogs();
-        if (dialogs.size > 0) {
-            let currentDialog = dialogs.peek(); // Получаем это окно
+    // 1. Создаем базовый диалог (класс Dialog автоматически центруется игрой)
+    const welcomeDialog = new Dialog("");
 
-            // Полностью очищаем центральную часть окна от пустоты
-            currentDialog.cont.clearChildren();
+    // 2. ЖЕСТКО ЗАДАЕМ РАЗМЕР ОКНА (Ширина, Высота в пикселях)
+    // Это не даст элементам разъехаться или улететь в верхний угол
+    welcomeDialog.setSize(680, 480);
 
-            // Создаем красивую серую подложку-рамку
-            let mainTable = currentDialog.cont.table(Styles.black6).pad(20).get();
+    // 3. Создаем внутреннюю красивую рамку, подгоняя под размер окна
+    let mainTable = welcomeDialog.cont.table(Styles.black6).pad(10).get();
 
-            // Добавляем заголовок мода
-            mainTable.add("[cyan]Приветствуем вас в моде![]").padTop(15).row();
+    // 4. Собираем контент внутри нашей рамки по вертикали (.row())
+    
+    // Заголовок мода
+    mainTable.add("[cyan]Приветствуем вас в моде![]").padTop(10).row();
 
-            // Жёлтая разделительная полоса
-            mainTable.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
+    // Жёлтая разделительная полоса
+    mainTable.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
 
-            // Текст сообщения
-            let textCell = mainTable.add(
-                "[orange]Я, один из разработчиков мода Mine Dust приветствую вас в моде![]\n\n" +
-                "Мод пока-что находится в бете, поэтому могут встречаться блоки/предметы без текстур, и баги :)\n\n" +
-                "Если вам нравится задумка, а может и реализация мода, вы можете поддержать его разработку, " +
-                "поставив звезду моду на [gray]Github[], либо подписавшись на [#24A1DE]телеграм канал[] разработчиков.\n\n" +
-                "[accent]Это сообщение можно выключить в настройках игры[]"
-            );
-            
-            textCell.width(600);
-            textCell.wrap();
-            textCell.center();
-            textCell.row();
+    // Сам текст сообщения
+    let textCell = mainTable.add(
+        "[orange]Я, один из разработчиков мода Mine Dust приветствую вас в моде![]\n\n" +
+        "Мод пока-что находится в бете, поэтому могут встречаться блоки/предметы без текстур, и баги :)\n\n" +
+        "Если вам нравится задумка, а может и реализация мода, вы можете поддержать его разработку, " +
+        "поставив звезду моду на [gray]Github[], либо подписавшись на [#24A1DE]телеграм канал[] разработчиков.\n\n" +
+        "[accent]Это сообщение можно выключить в настройках игры[]"
+    );
+    
+    textCell.width(600); // Ограничиваем текст по ширине рамки
+    textCell.wrap();     // Включаем автоперенос длинных строк
+    textCell.center();   // Выравниваем текст по центру плашки
+    textCell.row();
 
-            // Полностью очищаем нижнюю область кнопок и пересобираем её
-            currentDialog.buttons.clearChildren();
-            currentDialog.buttons.defaults().size(240, 50).pad(10);
+    // 5. Пересобираем область нижних кнопок
+    welcomeDialog.buttons.clearChildren();
+    welcomeDialog.buttons.defaults().size(200, 50).pad(10); // Чуть уменьшили размер для баланса
 
-            // Кнопка GitHub мода
-            currentDialog.buttons.button(Icon.github, "GitHub мода", () => {
-                Core.net.openURI("https://github.com");
-            });
-
-            // Кнопка закрытия окна
-            currentDialog.buttons.button(Icon.ok, "Хорошо", () => {
-                currentDialog.hide();
-            });
-
-            // Кнопка перехода в телеграм канал мода
-            currentDialog.buttons.button(Icon.link, "Telegram мода", () => {
-                Core.net.openURI("https://t.me");
-            });
-        }
+    // Кнопка GitHub мода
+    welcomeDialog.buttons.button(Icon.github, "GitHub мода", () => {
+        Core.net.openURI("https://github.com");
     });
+
+    // Кнопка закрытия окна
+    welcomeDialog.buttons.button(Icon.ok, "Хорошо", () => {
+        welcomeDialog.hide();
+    });
+
+    // Кнопка перехода в телеграм канал мода
+    welcomeDialog.buttons.button(Icon.link, "Telegram мода", () => {
+        Core.net.openURI("https://t.me");
+    });
+
+    // 6. Показываем готовое окно. Метод show() у класса Dialog выставит его 
+    // строго по геометрическому центру вашего экрана.
+    welcomeDialog.show();
 });
