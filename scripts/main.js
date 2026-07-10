@@ -1,20 +1,19 @@
 Events.on(ClientLoadEvent, () => {
 
-    // 1. Создаем ванильное, идеально отцентрированное окно с красивой полупрозрачной подложкой
-    // Метод showText принимает два параметра: (Заголовок, Текст)
-    // Мы передаем пустые строки, так как добавим их сами для точного контроля стилей!
-    const welcomeDialog = Vars.ui.showText("", "");
+    // 1. Создаем диалог с пробелом, чтобы включилась стандартная полупрозрачная рамка окна
+    const welcomeDialog = new BaseDialog(" ");
 
-    // 2. Находим внутренний контейнер контента окна (cont) и очищаем его от пустоты
-    welcomeDialog.cont.clearChildren();
+    // 2. Стираем пробел из верхней панели, чтобы заголовок не дублировался
+    welcomeDialog.titleTable.clearChildren();
 
-    // 3. Добавляем заголовок прямо по центру контейнера
+    // 3. Собираем контент внутри главного контейнера cont
+    // Добавляем заголовок
     welcomeDialog.cont.add("[cyan]Приветствуем вас в моде![]").padTop(10).row();
 
-    // 4. Добавляем жёлтую разделительную полосу
+    // Добавляем жёлтую разделительную полосу
     welcomeDialog.cont.image().color(Pal.accent).height(4).width(450).padTop(10).padBottom(15).row();
 
-    // 5. Добавляем ваш текст сообщения
+    // Добавляем ваш текст сообщения
     let cell = welcomeDialog.cont.add(
         "[orange]Я, один из разработчиков мода Mine Dust приветствую вас в моде![]\n\n" +
         "Мод пока-что находится в бете, поэтому могут встречаться блоки/предметы без текстур, и баги :)\n\n" +
@@ -23,22 +22,22 @@ Events.on(ClientLoadEvent, () => {
         "[accent]Это сообщение можно выключить в настройках игры[]"
     );
     
-    // Задаем жесткие лимиты тексту, чтобы игра ПРИНУДИТЕЛЬНО переносила строки и не растягивала окно
-    cell.width(600); // Идеальная ширина для читаемости
-    cell.wrap();     // Включаем автоперенос строк
-    cell.center();   // Центрируем текст внутри блока
+    // Ограничиваем ширину текста и включаем перенос строк
+    cell.width(600); 
+    cell.wrap();     
+    cell.center();   
     cell.row();
 
-    // 6. Находим контейнер кнопок (buttons) и полностью пересобираем его под 3 кнопки
+    // 4. Пересобираем нижние кнопки
     welcomeDialog.buttons.clearChildren();
-    welcomeDialog.buttons.defaults().size(240, 50).pad(10); // Чуть увеличили ширину кнопок
+    welcomeDialog.buttons.defaults().size(240, 50).pad(10);
 
     // Кнопка GitHub
     welcomeDialog.buttons.button(Icon.github, "GitHub мода", () => {
         Core.net.openURI("https://github.com");
     });
 
-    // Кнопка ОК (Хорошо)
+    // Кнопка ОК
     welcomeDialog.buttons.button(Icon.ok, "Хорошо", () => {
         welcomeDialog.hide();
     });
@@ -47,4 +46,8 @@ Events.on(ClientLoadEvent, () => {
     welcomeDialog.buttons.button(Icon.link, "Telegram мода", () => {
         Core.net.openURI("https://t.me");
     });
+
+    // 5. Показываем окно — этот метод сам выставит его идеально по центру экрана 
+    // с нужной прозрачностью фона, как у оригинального showText
+    welcomeDialog.show();
 });
