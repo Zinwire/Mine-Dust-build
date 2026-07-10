@@ -1,10 +1,10 @@
 Events.on(ClientLoadEvent, () => {
 
     // 1. Регистрируем чекбокс в настройках (Settings -> Game)
-    Vars.ui.settings.game.checkPref("show-mine-dust-welcome", true);
+    Vars.ui.settings.game.checkPref("md-welcome-message", true);
 
     // 2. Проверяем настройку
-    if (Core.settings.getBool("show-mine-dust-welcome")) {
+    if (Core.settings.getBool("md-welcome-message")) {
 
         //Первый выбор: Поддержать или закрыть
         Vars.ui.showCustomConfirm(
