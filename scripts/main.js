@@ -1,3 +1,6 @@
+
+
+
 Events.on(ClientLoadEvent, () => {
 
     // 1. Регистрируем чекбокс в настройках (Settings -> Game)
