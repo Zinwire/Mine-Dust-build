@@ -178,5 +178,5 @@ Events.on(ClientLoadEvent, () => {
     cannon.category = Category.turret;
     
     // Вживляем турель в древо технологий сразу после базовой турели Duo
-    Blocks.duo.techNode.setupNode(cannon, ItemStack.with(Items.copper, 150, Items.silicon, 70));
+    //Blocks.duo.techNode.setupNode(cannon, ItemStack.with(Items.copper, 150, Items.silicon, 70));
 });
