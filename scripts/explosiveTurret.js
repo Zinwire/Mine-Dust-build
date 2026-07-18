@@ -51,53 +51,50 @@ const cannon = extend(ItemTurret, "Cannon", {
 		const diamond = Vars.content.getByName(ContentType.item, "md-diamond");
 
 
-		const coalBullet = extend(BasicBulletType, {...exploBulletType,
-			status: StatusEffects.burning,
-			statusDuration: 5 * 60
-		});
-		//Надо будет добавить цвета пули
-		this.ammo(Items.coal, coalBullet);
+		const coalBullet = extend(BasicBulletType, Object.assign({}, exploBulletType, {
+            status: StatusEffects.burning,
+            statusDuration: 5 * 60
+        }));
+        this.ammo(Items.coal, coalBullet);
 
 
 		const bbDamage = exploBulletType.damage - 25;
-		const blastBullet = extend(BasicBulletType, {...exploBulletType,
-			damage: bbDamage,
-			splashDamage: bbDamage * 1.25,
-			splashDamageRadius: exploBulletType.splashDamageRadius + 4,
-			status: StatusEffects.blasted,
-			statusDuration: 5 * 60
-		});
-		//Надо будет добавить цвета пули
-		this.ammo(Items.blastCompound, blastBullet);
+        const blastBullet = extend(BasicBulletType, Object.assign({}, exploBulletType, {
+            damage: bbDamage,
+            splashDamage: bbDamage * 1.25,
+            splashDamageRadius: exploBulletType.splashDamageRadius + 4,
+            status: StatusEffects.blasted,
+            statusDuration: 5 * 60
+        }));
+        this.ammo(Items.blastCompound, blastBullet);
+        
 
 		const tbDamage = exploBulletType.damage + 40;
-		const thoriumBullet = extend(BasicBulletType, {...exploBulletType,
-			damage: tbDamage,
-			splashDamage: tbDamage * 0.2,
-			splashDamageRadius: exploBulletType.splashDamageRadius - 2
-		});
-		//Надо будет добавить цвета пули
-		if(radiationY != null){
-			thoriumBullet.status = radiationY;
-			thoriumBullet.statusDuration = 30 * 60;
-		}
-		this.ammo(Items.thorium, thoriumBullet);
+        const thoriumBullet = extend(BasicBulletType, Object.assign({}, exploBulletType, {
+            damage: tbDamage,
+            splashDamage: tbDamage * 0.2,
+            splashDamageRadius: exploBulletType.splashDamageRadius - 2
+        }));
+        if (radiationY != null) {
+            thoriumBullet.status = radiationY;
+            thoriumBullet.statusDuration = 30 * 60;
+        }
+        this.ammo(Items.thorium, thoriumBullet);
 		
 
-		if(uranium != null){
-			const ubDamage = exploBulletType.damage + 20;
-			const uraniumBullet = extend(BasicBulletType, {...exploBulletType,
-				damage: ubDamage,
-				splashDamage: ubDamage * 0.4,
-				splashDamageRadius: 9
-			});
-			//надо будет добавить цвета пули
-			if(radiationY != null){
-				uraniumBullet.status = radiationY;
-				uraniumBullet.statusDuration = 5 * 60 * 60;
-			}
-			this.ammo(uranium, uraniumBullet);
-		}
+		if (uranium != null) {
+            const ubDamage = exploBulletType.damage + 20;
+            const uraniumBullet = extend(BasicBulletType, Object.assign({}, exploBulletType, {
+                damage: ubDamage,
+                splashDamage: ubDamage * 0.4,
+                splashDamageRadius: 9
+            }));
+            if (radiationY != null) {
+                uraniumBullet.status = radiationY;
+                uraniumBullet.statusDuration = 5 * 60 * 60;
+            }
+            this.ammo(uranium, uraniumBullet);
+        }
 		
 
 
@@ -120,4 +117,4 @@ const cannon = extend(ItemTurret, "Cannon", {
 	
 });
 
-cannon.consume(new ConsumeCoolant(0.3 / 60)).update = false;
+cannon.consume(new ConsumeCoolant(0.3)).update = false;
