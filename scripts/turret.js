@@ -17,7 +17,7 @@ const cannon = extend(ItemTurret, "cannon", {
     recoilTime: 37,
 
     init() {
-        const radiationY = Vars.content.getByName(ContentType.status, "md-radiation-y");
+        const radiationY = Vars.content.getByName(ContentType.status, "md-Radiation-Y");
         const uranium = Vars.content.getByName(ContentType.item, "md-Uranium");
 
         // ---- КОД ДЛЯ УГЛЯ ----
@@ -87,7 +87,7 @@ const cannon = extend(ItemTurret, "cannon", {
 cannon.buildType = () => extend(ItemTurret.ItemTurretBuild, cannon, {});
 
 // 3. Настройка охлаждения
-cannon.consume(new Packages.mindustry.world.consumers.ConsumeCoolant(0.3 / 60, true, false)).update = false;
+cannon.consume(new Packages.mindustry.world.consumers.ConsumeCoolant(0.3, true, false)).update = false;
 
 // 4. ИСПРАВЛЕНИЕ ОТОБРАЖЕНИЯ: Заставляем UI-движок игры зарегистрировать турель во всех списках 
 // строго в момент окончания загрузки клиента игры.
