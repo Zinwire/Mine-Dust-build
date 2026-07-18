@@ -173,3 +173,10 @@ const cannon = extend(ItemTurret, "testcannon", {
 });
 
 //cannon.consume(new ConsumeCoolant(0.3)).update = false;
+Events.on(ClientLoadEvent, () => {
+    // Вручную присваиваем категорию меню постройки
+    cannon.category = Category.turret;
+    
+    // Вживляем турель в древо технологий сразу после базовой турели Duo
+    Blocks.duo.techNode.setupNode(cannon, ItemStack.with(Items.copper, 150, Items.silicon, 70));
+});
