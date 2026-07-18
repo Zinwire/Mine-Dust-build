@@ -50,25 +50,32 @@ const cannon = extend(ItemTurret, "Cannon", {
 		const uranium = Vars.content.getByName(ContentType.item, "md-uranium");
 		const diamond = Vars.content.getByName(ContentType.item, "md-diamond");
 
-		const coalBullet = exploBulletType.clone();
-		coalBullet.status = StatusEffects.burning;
-		coalBullet.statusDuration = 5 * 60;
+
+		const coalBullet = extend(BasicBulletType, {...exploBulletType,
+			status: StatusEffects.burning,
+			statusDuration: 5 * 60
+		});
 		//Надо будет добавить цвета пули
 		this.ammo(Items.coal, coalBullet);
 
-		const blastBullet = exploBulletType.clone();
-		blastBullet.status = StatusEffects.blasted;
-		blastBullet.statusDuration = 5 * 60;
-		blastBullet.damage -= 25;
-		blastBullet.splashDamage = blastBullet.damage * 1.25;
-		blastBullet.splashDamageRadius += 4;
+
+		const bbDamage = exploBulletType.damage - 25;
+		const blastBullet = extend(BasicBulletType, {...exploBulletType,
+			damage: bbDamage,
+			splashDamage: bbDamage * 1.25,
+			splashDamageRadius: exploBulletType.splashDamageRadius + 4,
+			status: StatusEffects.blasted,
+			statusDuration: 5 * 60
+		});
 		//Надо будет добавить цвета пули
 		this.ammo(Items.blastCompound, blastBullet);
 
-		const thoriumBullet = exploBulletType.clone();
-		thoriumBullet.damage += 40;
-		thoriumBullet.splashDamage = thoriumBullet.damage * 0.2;
-		thoriumBullet.splashDamageRadius -= 2;
+		const tbDamage = exploBulletType.damage + 40;
+		const thoriumBullet = extend(BasicBulletType, {...exploBulletType,
+			damage: tbDamage,
+			splashDamage: tbDamage * 0.2,
+			splashDamageRadius: exploBulletType.splashDamageRadius - 2
+		});
 		//Надо будет добавить цвета пули
 		if(radiationY != null){
 			thoriumBullet.status = radiationY;
@@ -76,11 +83,14 @@ const cannon = extend(ItemTurret, "Cannon", {
 		}
 		this.ammo(Items.thorium, thoriumBullet);
 		
+
 		if(uranium != null){
-			const uraniumBullet = exploBulletType.clone();
-			uraniumBullet.damage += 20;
-			uraniumBullet.splashDamage = uraniumBullet.damage * 0.4;
-			uraniumBullet.splashDamageRadius -= 1;
+			const ubDamage = exploBulletType.damage + 20;
+			const uraniumBullet = extend(BasicBulletType, {...exploBulletType,
+				damage: ubDamage,
+				splashDamage: ubDamage * 0.4,
+				splashDamageRadius: 9
+			});
 			//надо будет добавить цвета пули
 			if(radiationY != null){
 				uraniumBullet.status = radiationY;
@@ -102,7 +112,7 @@ const cannon = extend(ItemTurret, "Cannon", {
 			diamond, 50
 		);
 
-		
+
 
 		this.super$init();
 	}
