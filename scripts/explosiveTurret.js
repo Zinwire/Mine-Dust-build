@@ -20,7 +20,7 @@ const exploBulletType = extend(BasicBulletType, {
 
 
 //Сама турель
-const cannon = extend(ItemTurret, "testcannon", {
+const cannon = extend(ItemTurret, "cannon", {
 
 	name: "Testing",
 	description: "A big turret with a good blast bullets [W.I.P.]",
