@@ -68,7 +68,10 @@ const cannon = extend(ItemTurret, "cannon", {
                 uraniumBullet.status = radiationY;
                 uraniumBullet.statusDuration = 5 * 60 * 60;
             }
-            this.ammo(uranium, uraniumBullet);
+            this.ammo   (Items.coal, coalBullet,
+            			Items.blastCompound, blastBullet,
+            			Items.thorium, thoriumBullet,
+           				uranium, uraniumBullet);
         }
 
         // Настройка очереди выстрелов
@@ -89,7 +92,7 @@ cannon.consume(new Packages.mindustry.world.consumers.ConsumeCoolant(0.3 / 60, t
 // 4. ИСПРАВЛЕНИЕ ОТОБРАЖЕНИЯ: Заставляем UI-движок игры зарегистрировать турель во всех списках 
 // строго в момент окончания загрузки клиента игры.
 Events.on(ClientLoadEvent, () => {
-    const diamond = Vars.content.getByName(ContentType.item, "md-diamond");
+    const diamond = Vars.content.getByName(ContentType.item, "md-Diamond");
 
     cannon.category = Category.turret;
     cannon.buildVisibility = BuildVisibility.shown;
