@@ -5,7 +5,7 @@
 	"size": 3,
 	"health": 550,
 	"reload": 240,
-	"rotate": 0.5,
+	"rotateSpeed": 0.5,
 	"range": 240,
 	"shootSound": "railgun",
 	"requirements": [

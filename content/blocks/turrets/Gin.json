@@ -28,7 +28,6 @@
 		"lead": {
 			"type": "BasicBulletType",
 			"damage": 20,
-			"homing": true,
 			"homingPower": 0.02,
 			"lifetime": 180,
 			"pierce": true,
@@ -38,7 +37,6 @@
 		"silicon": {
 			"type": "BasicBulletType",
 			"damage": 30,
-			"homing": true,
 			"homingPower": 0.1,
 			"pierce": true,
 			"pierceCap": 1,
@@ -48,7 +46,6 @@
 		"titanium": {
 			"type": "BasicBulletType",
 			"damage": 35,
-			"homing": true,
 			"homingPower": 0.02,
 			"lifetime": 180,
 			"pierce": true,
@@ -58,7 +55,6 @@
 		"Bronze": {
 			"type": "BasicBulletType",
 			"damage": 40,
-			"homing": true,
 			"homingPower": 0.022,
 			"lifetime": 180,
 			"pierce": true,
