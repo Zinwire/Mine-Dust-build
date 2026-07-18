@@ -1,4 +1,4 @@
-Console.log("Турель считывается");
+Log.info("Турель считывается");
 
 // 1. Создаем сам блок турели
 const cannon = extend(ItemTurret, "cannon", {
