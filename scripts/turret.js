@@ -18,7 +18,7 @@ const cannon = extend(ItemTurret, "cannon", {
 
     init() {
         const radiationY = Vars.content.getByName(ContentType.status, "md-radiation-y");
-        const uranium = Vars.content.getByName(ContentType.item, "md-uranium");
+        const uranium = Vars.content.getByName(ContentType.item, "md-Uranium");
 
         // ---- КОД ДЛЯ УГЛЯ ----
         const coalBullet = extend(BasicBulletType, {
