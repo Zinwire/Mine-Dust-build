@@ -35,6 +35,14 @@ const cannon = extend(ItemTurret, "testcannon", {
 	inaccuracy: 12,
 	hasLiquids: true,
 	category: Category.turret,
+	requirements: ItemStack.with(
+		Items.copper, 150,
+		Items.silicon, 70,
+		Items.graphite, 70,
+		Items.titanium, 80,
+		diamond, 50
+	);
+
 
 	//shootSound = [sound]
 	//shootEffect = [Fx.effect]
@@ -157,13 +165,13 @@ const cannon = extend(ItemTurret, "testcannon", {
 		this.shoot.shots = 3;
 		this.shoot.shotDelay = 5;
 
-		this.requirements = ItemStack.with(
-			Items.copper, 150,
-			Items.silicon, 70,
-			Items.graphite, 70,
-			Items.titanium, 80,
-			diamond, 50
-		);
+		//this.requirements = ItemStack.with(
+		//	Items.copper, 150,
+		//	Items.silicon, 70,
+		//	Items.graphite, 70,
+		//	Items.titanium, 80,
+		//	diamond, 50
+		//);
 
 
 
