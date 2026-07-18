@@ -40,7 +40,7 @@ const cannon = extend(ItemTurret, "testcannon", {
 		Items.silicon, 70,
 		Items.graphite, 70,
 		Items.titanium, 80,
-		diamond, 50
+		Vars.content.getByName(ContentType.item, "md-diamond"), 50
 	),
 
 
