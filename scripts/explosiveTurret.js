@@ -41,7 +41,7 @@ const cannon = extend(ItemTurret, "testcannon", {
 		Items.graphite, 70,
 		Items.titanium, 80,
 		diamond, 50
-	);
+	),
 
 
 	//shootSound = [sound]
