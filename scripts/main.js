@@ -1,4 +1,4 @@
-
+require("explosiveTurret");
 
 
 Events.on(ClientLoadEvent, () => {
