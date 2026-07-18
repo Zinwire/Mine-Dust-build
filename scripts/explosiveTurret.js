@@ -20,7 +20,7 @@ const exploBulletType = extend(BasicBulletType, {
 
 
 //Сама турель
-const cannon = extend(ItemTurret, "Cannon", {
+const cannon = extend(ItemTurret, "cannon", {
 
 	description: "A big turret with a good blast bullets [W.I.P.]",
 	health: 800,
