@@ -172,4 +172,4 @@ const cannon = extend(ItemTurret, "testcannon", {
 	
 });
 
-cannon.consume(new ConsumeCoolant(0.3)).update = false;
+//cannon.consume(new ConsumeCoolant(0.3)).update = false;
