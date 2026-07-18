@@ -22,6 +22,7 @@ const exploBulletType = extend(BasicBulletType, {
 //Сама турель
 const cannon = extend(ItemTurret, "testcannon", {
 
+	name: "Testing",
 	description: "A big turret with a good blast bullets [W.I.P.]",
 	health: 800,
 	size: 3,
