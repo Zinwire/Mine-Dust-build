@@ -48,6 +48,8 @@ try{
         		diamond, 50
         	);
 
+        	cannon.buildVisibility = BuildVisibility.shown;
+
         	//Угольные пт
         	const coalBullet = extend(BasicBulletType, {
         		damage: sbullet.damage,
