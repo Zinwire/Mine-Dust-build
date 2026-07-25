@@ -1,3 +1,5 @@
+let logger = require("libs/logger");
+
 //Собрал все турели в один файл для удобства
 Log.info("[md] [blue]Файл turrets.js запущен[]");
 
@@ -6,9 +8,6 @@ try{
 
 	const cannon = extend(ItemTurretType, {})
 
-} catch(error){
-	Log.info("[md] [scarlet]Cannon не запустился, т.к:[]");
-	if(error.stack){
-		Log.info("[#eaff00]" + error.stack + "[]");
-	}
+} catch(err){
+	logger.blockError("Cannon", err);
 }
