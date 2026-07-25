@@ -48,7 +48,7 @@ try{
         		diamond, 50
         	);
 
-        	cannon.buildVisibility = BuildVisibility.shown;
+        	this.buildVisibility = BuildVisibility.shown;
 
         	//Угольные пт
         	const coalBullet = extend(BasicBulletType, {
