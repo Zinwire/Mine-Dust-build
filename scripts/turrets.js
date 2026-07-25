@@ -9,6 +9,6 @@ try{
 } catch(error){
 	Log.info("[md] [scarlet]Cannon не запустился, т.к:[]");
 	if(error.stack){
-		Log.info("[eaff00]" + error.stack + "[]");
+		Log.info("[#eaff00]" + error.stack + "[]");
 	}
 }
