@@ -52,7 +52,7 @@ const cannon = extend(ItemTurret, "cannon", {
         const blastBullet = extend(BasicBulletType, {
             damage: bbDamage, speed: 3.3, width: 5, height: 5, lifetime: 40,
             homingPower: 0.15, homingRange: 40,
-            splashDamage: bbDamage * 1.25, splashDamageRadius: 10 + 4,
+            splashDamage: bbDamage * 2.25, splashDamageRadius: 10 + 4,
             hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion, //Эффекты всякие
             status: StatusEffects.blasted, statusDuration: 5 * 60
             /* ДОБАВИТЬ ДРУГИЕ ЭФФЕКТЫ */
