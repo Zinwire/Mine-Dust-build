@@ -23,6 +23,18 @@ const cannon = extend(ItemTurret, "cannon", {
     	//getByName(ContentType, string) ищет контент по системному названию
         const radiationY = Vars.content.getByName(ContentType.status, "md-Radiation-Y");
         const uranium = Vars.content.getByName(ContentType.item, "md-Uranium");
+        const diamond = Vars.content.getByName(ContentType.item, "md-Diamond");
+
+        cannon.category = Category.turret; //Категория
+        cannon.buildVisibility = BuildVisibility.shown; //Принудительный показ блока
+    
+        cannon.requirements = ItemStack.with(    //требования для постройки
+            Items.copper, 150,
+            Items.silicon, 70,
+            Items.graphite, 70,
+            Items.titanium, 80,
+            diamond, 50
+        );
 
         //Патроны за уголь, мне лень расписывать
         const coalBullet = extend(BasicBulletType, {
@@ -95,24 +107,25 @@ const cannon = extend(ItemTurret, "cannon", {
 
 // ИСПРАВЛЕНИЕ ИСЧЕЗНОВЕНИЯ: Принудительно привязываю к турели класс её физического здания на карте.
 // Теперь игра четко поймет, как ставить её в игровом мире, и она БОЛЬШЕ НЕ БУДЕТ ИСЧЕЗАТЬ при постройке
-cannon.buildType = () => extend(ItemTurret.ItemTurretBuild, cannon, {});
+//cannon.buildType = () => extend(ItemTurret.ItemTurretBuild, cannon, {});
 
 // Настройка охлаждения (упоротое говнище)
 cannon.consume(new Packages.mindustry.world.consumers.ConsumeCoolant(0.3, true, false)).update = false;
 
 
-// На всякий точно когда всё загрузилось уже назначаю категорию, требования, и принудительный показ блока
-Events.on(ClientLoadEvent, () => {
-    const diamond = Vars.content.getByName(ContentType.item, "md-Diamond");
-
-    cannon.category = Category.turret;
-    cannon.buildVisibility = BuildVisibility.shown;
-
-    cannon.requirements = ItemStack.with(
-        Items.copper, 150,
-        Items.silicon, 70,
-        Items.graphite, 70,
-        Items.titanium, 80,
-        diamond, 50
-    );
-});
+//// На всякий точно когда всё загрузилось уже назначаю категорию, требования, и принудительный показ блока
+//Events.on(ClientLoadEvent, () => {
+//    const diamond = Vars.content.getByName(ContentType.item, "md-Diamond");
+//
+//    cannon.category = Category.turret;
+//    cannon.buildVisibility = BuildVisibility.shown;
+//
+//    cannon.requirements = ItemStack.with(
+//        Items.copper, 150,
+//        Items.silicon, 70,
+//        Items.graphite, 70,
+//        Items.titanium, 80,
+//        diamond, 50
+//    );
+//});
+//
