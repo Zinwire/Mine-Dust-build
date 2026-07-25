@@ -7,7 +7,6 @@ Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
 try{
 
 	const cannon = extend(ItemTurret,"cannon", {
-		description: "A big turret with homing explode bullets [W.I.P.]",
 		health: 800,
 		size: 3,
 		range: 27.5 * 8,
