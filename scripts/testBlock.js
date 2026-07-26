@@ -38,7 +38,7 @@ try{
 				this.health = this.maxHealth * healthPerc;
 				Fx.blockCrash.at(this.x, this.y);
 				Log.info("Блок с юишкой работает");
-			})).size(50).tooltip("[accent]TextTEXTтекстТЕКСТ[]").setStyle(Styles.cleari);
+			})).size(50).tooltip("[accent]TextTEXTтекстТЕКСТ[]");
 
 			table.button(Icon.power, Styles.cleari, run(() => {
 
@@ -49,7 +49,7 @@ try{
 				this.health = this.maxHealth * healthPerc;
 				Fx.blastExplosion.at(this.x, this.y);
 				Log.info("[green]Блок с юишкой работает 2[]");
-			})).size(50).tooltip("ЕЩЁтекстеЩёТЕКСТтеКст").setStyle(Styles.cleari);
+			})).size(50).tooltip("ЕЩЁтекстеЩёТЕКСТтеКст");
 
 		},
 
