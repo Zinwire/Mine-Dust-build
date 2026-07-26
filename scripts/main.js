@@ -1,5 +1,6 @@
 //рекьюр просто исполняет текст в файле, указанном в скобках без расширения (То есть тут turrets.js копируется)
 require("turrets");
+require("testBlock");
 
 
 Events.on(ClientLoadEvent, () => {
