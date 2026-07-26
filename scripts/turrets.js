@@ -52,14 +52,18 @@ try{
 
         	//Угольные пт
         	const coalBullet = extend(BasicBulletType, {
-        		damage: sbullet.damage,
+        		damage: sbullet.damage + 5,
         		speed: sbullet.speed,
         		width: sbullet.width,
         		height: sbullet.height,
         		homingPower: sbullet.homingPower, homingRange: sbullet.homingRange,
         		splashDamage: sbullet.splashDamage, splashDamageRadius: sbullet.splashDamageRadius,
         		hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion,
-        		status: StatusEffects.burning, statusDuration: 5 * 60
+        		status: StatusEffects.melting, statusDuration: 5 * 60,
+        		ammoMultiplier: 2,
+        		//frontColor: Color.valueOf();
+        		//backColor: Color.valueOf();
+        		hitSound: Sounds.explosion
         		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
         	});
 			coalBullet.lifetime = cannon.range / coalBullet.speed;
@@ -71,24 +75,32 @@ try{
         		width: sbullet.width,
         		height: sbullet.height,
         		homingPower: sbullet.homingPower, homingRange: sbullet.homingRange,
-        		splashDamageRadius: sbullet.splashDamageRadius + 6,
+        		splashDamageRadius: sbullet.splashDamageRadius + 14,
         		hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion,
-        		status: StatusEffects.blasted, statusDuration: 5 * 60
+        		status: StatusEffects.blasted, statusDuration: 5 * 60,
+        		ammoMultiplier: 3,
+        		frontColor: Color.valueOf("ee0000"),
+        		backColor: Color.valueOf("b60000"),
+        		hitSound: Sounds.explosion
         		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			blastBullet.lifetime = cannon.range / blastBullet.speed;
-			blastBullet.splashDamage = blastBullet.damage * 2.25;
+			blastBullet.splashDamage = blastBullet.damage * 2.8;
 
 			//Ториевые пт
 			const thoriumBullet = extend(BasicBulletType, {
-				damage: sbullet.damage + 40,
+				damage: sbullet.damage + 30,
         		speed: sbullet.speed,
         		width: sbullet.width - 1,
         		height: sbullet.height - 1,
         		homingPower: sbullet.homingPower, homingRange: sbullet.homingRange,
         		splashDamageRadius: sbullet.splashDamageRadius - 5,
         		hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion,
-        		status: radiationY, statusDuration: 30 * 60
+        		status: radiationY, statusDuration: 30 * 60,
+        		ammoMultiplier: 1,
+        		frontColor: Color.valueOf("f9a3c7"),
+        		backColor: Color.valueOf("c8486d"),
+        		hitSound: Sounds.explosion
         		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			thoriumBullet.lifetime = cannon.range / thoriumBullet.speed;
@@ -101,9 +113,13 @@ try{
         		width: sbullet.width,
         		height: sbullet.height,
         		homingPower: sbullet.homingPower, homingRange: sbullet.homingRange,
-        		splashDamageRadius: sbullet.splashDamageRadius,
+        		splashDamageRadius: sbullet.splashDamageRadius - 2,
         		hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion,
-        		status: radiationY, statusDuration: 5 * 60 * 60
+        		status: radiationY, statusDuration: 5 * 60 * 60,
+        		ammoMultiplier: 3,
+        		frontColor: Color.valueOf("65f07c"),
+        		backColor: Color.valueOf("0C7D1F"),
+        		hitSound: Sounds.explosion
         		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			uraniumBullet.lifetime = cannon.range / uraniumBullet.speed;
@@ -116,7 +132,7 @@ try{
 				uranium, uraniumBullet);
 
 			this.shoot.shots = 3;
-			this.shoot.shotDelay = 5;
+			this.shoot.shotDelay = 7;
 
 			cannon.consume(new Packages.mindustry.world.consumers.ConsumeCoolant(0.3, true, false)).update = false;			
 
