@@ -29,7 +29,7 @@ try{
 			table.clear();
 			//table.background(Styles.black6);
 
-			table.button(new TextureRegionDrawable(Icon.steam.getRegion()), 24, run(() => {
+			table.button(Icon.steam, Styles.cleari, run(() => {
 
 				let healthPerc = this.health / this.maxHealth;
 
@@ -40,7 +40,7 @@ try{
 				Log.info("Блок с юишкой работает");
 			})).size(50).tooltip("[accent]TextTEXTтекстТЕКСТ[]").setStyle(Styles.cleari);
 
-			table.button(new TextureRegionDrawable(Icon.power.getRegion()), 24, run(() => {
+			table.button(Icon.power, Styles.cleari, run(() => {
 
 				let healthPerc = this.health / this.maxHealth;
 
