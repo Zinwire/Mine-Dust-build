@@ -27,7 +27,7 @@ try{
 		buildConfiguration(table){
 
 			table.clear();
-			table.background(Styles.black6);
+			//table.background(Styles.black6);
 
 			table.button(new TextureRegionDrawable(Icon.steam.getRegion()), 24, run(() => {
 
