@@ -9,6 +9,11 @@ function OnBlockError(blockName, exception) {
 	}
 }
 
+function OnFileRead(fileName) {
+	Log.info("[green][md][] [blue]Чтение файла @...[]", fileName);
+}
+
 module.exports = {
-	blockError: OnBlockError
+	blockError: OnBlockError,
+	fileRead: OnFileRead
 }

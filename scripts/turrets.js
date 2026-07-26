@@ -1,7 +1,8 @@
 let logger = require("libs/logger");
 
 //Собрал все турели в один файл для удобства
-Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
+//Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
+logger.fileRead("turrets.js");
 
 //md-cannon / Пушка
 try{
