@@ -1,3 +1,5 @@
+//Файл для референсов по работе с ui блоков
+
 const logger = require("libs/logger");
 
 logger.fileRead("testBlock.js");
@@ -9,7 +11,11 @@ try{
 		health: 1,
 		size: 2,
 		category: Category.effect,
-		buildVisibility: BuildVisibility.shown,
+
+		//Так как тестовый блок, показ выключен
+		//раскомментировать строку ниже для включения блока в игру
+		//buildVisibility: BuildVisibility.shown,
+
 		configurable: true, //В теории, блок может быть настраиваемым
 
 		init(){
@@ -29,6 +35,7 @@ try{
 			table.clear();
 			//table.background(Styles.black6);
 
+			//table.button(Icon.steam, Styles.cleari, run(() => { для чистой кнопки (Как у процессора)
 			table.button(new TextureRegionDrawable(Icon.steam.getRegion()), 24, run(() => {
 
 				let healthPerc = this.health / this.maxHealth;
@@ -40,6 +47,7 @@ try{
 				Log.info("Блок с юишкой работает");
 			})).size(50).tooltip("[accent]TextTEXTтекстТЕКСТ[]");
 
+			//table.button(Icon.power, Styles.cleari, run(() => { для чистой кнопки
 			table.button(new TextureRegionDrawable(Icon.power.getRegion()), 24, run(() => {
 
 				let healthPerc = this.health / this.maxHealth;
