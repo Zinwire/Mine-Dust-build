@@ -79,8 +79,8 @@ try{
         		hitEffect: Fx.blastExplosion, despawnEffect: Fx.blastExplosion,
         		status: StatusEffects.blasted, statusDuration: 5 * 60,
         		ammoMultiplier: 3,
-        		frontColor: Color.valueOf("ee0000"),
-        		backColor: Color.valueOf("b60000"),
+        		frontColor: Color.valueOf("f06666"),
+        		backColor: Color.valueOf("DB1515"),
         		hitSound: Sounds.explosion
         		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
