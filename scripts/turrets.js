@@ -64,7 +64,6 @@ try{
         		//frontColor: Color.valueOf();
         		//backColor: Color.valueOf();
         		hitSound: Sounds.explosion
-        		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
         	});
 			coalBullet.lifetime = cannon.range / coalBullet.speed;
 
@@ -82,7 +81,6 @@ try{
         		frontColor: Color.valueOf("f06666"),
         		backColor: Color.valueOf("DB1515"),
         		hitSound: Sounds.explosion
-        		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			blastBullet.lifetime = cannon.range / blastBullet.speed;
 			blastBullet.splashDamage = blastBullet.damage * 2.8;
@@ -101,7 +99,6 @@ try{
         		frontColor: Color.valueOf("f9a3c7"),
         		backColor: Color.valueOf("c8486d"),
         		hitSound: Sounds.explosion
-        		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			thoriumBullet.lifetime = cannon.range / thoriumBullet.speed;
 			thoriumBullet.splashDamage = thoriumBullet.damage * 0.2;
@@ -120,7 +117,6 @@ try{
         		frontColor: Color.valueOf("65f07c"),
         		backColor: Color.valueOf("0C7D1F"),
         		hitSound: Sounds.explosion
-        		/*ДОБАВИТЬ ЭФФЕКТЫ И ЦВЕТА ПУЛЯМ В БУДУЩЕМ*/
 			});
 			uraniumBullet.lifetime = cannon.range / uraniumBullet.speed;
 			uraniumBullet.splashDamage = uraniumBullet.damage * 0.5;
