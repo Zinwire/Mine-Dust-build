@@ -139,3 +139,58 @@ try{
 } catch(err){
 	logger.blockError("Cannon", err);
 }
+
+//md-tesla / Тесла
+try{
+		// md-tesla / Турель Тесла
+	const tesla = extend(PowerTurret, "tesla", {
+		description: "An advanced electric turret that strikes a target and unleashes a cascading chain of lightning. [W.I.P.]",
+		health: 1200,
+		size: 2,
+		range: 160, 
+		reload: 50,  
+		targetAir: true,
+		targetGround: true,
+		hasPower: true,
+		recoil: 0,   
+		category: Category.turret,
+		buildVisibility: BuildVisibility.shown,
+
+		init() {
+			this.requirements = ItemStack.with(
+				Items.silicon, 80,
+				Items.titanium, 60,
+				Vars.content.getByName(ContentType.item, "md-Steel") || Items.graphite, 50
+			);
+			this.consumePower(6.0);
+			this.super$init();
+		}
+	});
+
+	tesla.buildType = () => extend(PowerTurret.PowerTurretBuild, tesla, {
+		shoot(type) {
+			this.super$shoot(type); 
+
+			if (this.target != null) {
+				let tx = this.target.getX();
+				let ty = this.target.getY();
+				let angle = this.angleTo(this.target);
+
+				// ЛУЧ 1: Пускаем основную молнию ИЗ ТУРЕЛИ ВО ВРАГА. 
+				// Задаем длину 18 сегментов. Радар Анукена зацепит цель на подлете, 
+				// дотянет луч до координат врага и нанесет ему первый урон.
+				Lightning.create(this.team, Color.lightSkyBlue, 35, this.x, this.y, angle, 18);
+
+				// ЛУЧ 2: Чтобы ток не застрял, мы ПРИНУДИТЕЛЬНО создаем цепной всплеск ИЗ САМОГО ВРАГА.
+				// Передаем координаты цели (tx, ty) и пускаем молнию на 8 сегментов вперед по ходу движения.
+				// Так как расстояние до цели равно 0, все 8 сегментов пойдут строго на прыжки по соседям!
+				Lightning.create(this.team, Color.lightSkyBlue, 25, tx, ty, angle, 8);
+				
+				Sounds.spark.at(this.x, this.y);
+			}
+		}
+	});
+
+}catch(e){
+	logger.blockError("Tesla", e);
+}
