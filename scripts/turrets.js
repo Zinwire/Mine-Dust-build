@@ -200,7 +200,7 @@ try{
 				// ЛУЧ 2: Цепной веер молний из самого врага по его соседям (8 сегментов)
 				Lightning.create(this.team, Color.sky, 25, tx, ty, angle, 8);
 				
-				Sounds.spark.at(this.x, this.y);
+				//Sounds.spark.at(this.x, this.y);
 			}
 		}
 	});
