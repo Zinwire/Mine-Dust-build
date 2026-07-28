@@ -195,10 +195,10 @@ try{
 				let angle = this.angleTo(this.target);
 
 				// ЛУЧ 1: Основная молния из турели во врага (18 сегментов)
-				Lightning.create(this.team, Color.lightSkyBlue, 35, this.x, this.y, angle, 18);
+				Lightning.create(this.team, Color.sky, 35, this.x, this.y, angle, 18);
 
 				// ЛУЧ 2: Цепной веер молний из самого врага по его соседям (8 сегментов)
-				Lightning.create(this.team, Color.lightSkyBlue, 25, tx, ty, angle, 8);
+				Lightning.create(this.team, Color.sky, 25, tx, ty, angle, 8);
 				
 				Sounds.spark.at(this.x, this.y);
 			}
