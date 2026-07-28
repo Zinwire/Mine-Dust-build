@@ -142,8 +142,8 @@ try{
 
 //md-tesla / Тесла
 try{
-	// md-tesla / Турель Тесла
-	const tesla = extend(Turret, "tesla", { // ИСПРАВЛЕНО: используем чистый Turret вместо PowerTurret
+		// md-tesla / Турель Тесла
+	const tesla = extend(PowerTurret, "tesla", {
 		description: "An advanced electric turret that strikes a target and unleashes a cascading chain of lightning. [W.I.P.]",
 		health: 1200,
 		size: 2,
@@ -151,6 +151,7 @@ try{
 		reload: 50,  
 		targetAir: true,
 		targetGround: true,
+		hasPower: true,
 		recoil: 0,   
 		category: Category.turret,
 		buildVisibility: BuildVisibility.shown,
@@ -162,45 +163,44 @@ try{
 				Vars.content.getByName(ContentType.item, "md-Steel") || Items.graphite, 50
 			);
 
-			// ИСПРАВЛЕНО: Явно подключаем потребление энергии к обычному классу турели
+			// Задаем потребление энергии (6 единиц в тик)
 			this.consumePower(6.0);
-			
+
+			// ИСПРАВЛЕНО: Создаем пулю через LightningBulletType. 
+			// Для PowerTurret это легальный тип пули, peekAmmo() не вернет null и игра НЕ крашнется!
+			this.shootType = extend(LightningBulletType, {
+				damage: 0,              // Наша основная пуля наносит 0 урона
+				lightningLength: 1,     // Делаем визуальный луч невидимым
+				lightningLengthRand: 0,
+				shootEffect: Fx.lightningCharge,
+				smokeEffect: Fx.none,
+				hitEffect: Fx.none,
+				despawnEffect: Fx.none
+			});
+
 			this.super$init();
 		}
 	});
 
-	tesla.buildType = () => extend(Turret.TurretBuild, tesla, {
-		// Внутренний таймер перезарядки, чтобы не зависеть от патронной логики игры
-		_reloadTimer: 0,
+	tesla.buildType = () => extend(PowerTurret.PowerTurretBuild, tesla, {
+		// ИСПРАВЛЕНО: Используем правильную Java-перегрузку метода shoot для зданий на карте!
+		// В Java у здания сигнатура: void shoot(BulletType type)
+		shoot(type) {
+			this.super$shoot(type); // Запускаем базовую вспышку на стволе
 
-		updateTile() {
-			this.super$updateTile();
-
-			// Проверяем, запитан ли блок энергией
-			if (!this.hasPower) return;
-
-			// Обрабатываем перезарядку
-			if (this._reloadTimer > 0) {
-				this._reloadTimer -= Time.delta;
-				return;
-			}
-
-			// Если турель готова стрелять и видит цель
+			// Поскольку это PowerTurret, таргет-система игры теперь РАБОТАЕТ и находит врагов!
 			if (this.target != null) {
 				let tx = this.target.getX();
 				let ty = this.target.getY();
 				let angle = this.angleTo(this.target);
 
-				// ЛУЧ 1: Основная молния из турели во врага
+				// ЛУЧ 1: Основная молния из турели во врага (18 сегментов)
 				Lightning.create(this.team, Color.lightSkyBlue, 35, this.x, this.y, angle, 18);
 
-				// ЛУЧ 2: Гарантированный цепной всплеск из самого врага по соседям
+				// ЛУЧ 2: Цепной веер молний из самого врага по его соседям (8 сегментов)
 				Lightning.create(this.team, Color.lightSkyBlue, 25, tx, ty, angle, 8);
 				
 				Sounds.spark.at(this.x, this.y);
-
-				// Сбрасываем таймер перезарядки
-				this._reloadTimer = tesla.reload;
 			}
 		}
 	});
