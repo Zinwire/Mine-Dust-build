@@ -142,8 +142,8 @@ try{
 
 //md-tesla / Тесла
 try{
-		// md-tesla / Турель Тесла
-	const tesla = extend(PowerTurret, "tesla", {
+	// md-tesla / Турель Тесла
+	const tesla = extend(Turret, "tesla", { // ИСПРАВЛЕНО: используем чистый Turret вместо PowerTurret
 		description: "An advanced electric turret that strikes a target and unleashes a cascading chain of lightning. [W.I.P.]",
 		health: 1200,
 		size: 2,
@@ -151,7 +151,6 @@ try{
 		reload: 50,  
 		targetAir: true,
 		targetGround: true,
-		hasPower: true,
 		recoil: 0,   
 		category: Category.turret,
 		buildVisibility: BuildVisibility.shown,
@@ -162,31 +161,46 @@ try{
 				Items.titanium, 60,
 				Vars.content.getByName(ContentType.item, "md-Steel") || Items.graphite, 50
 			);
+
+			// ИСПРАВЛЕНО: Явно подключаем потребление энергии к обычному классу турели
 			this.consumePower(6.0);
+			
 			this.super$init();
 		}
 	});
 
-	tesla.buildType = () => extend(PowerTurret.PowerTurretBuild, tesla, {
-		shoot(type) {
-			this.super$shoot(type); 
+	tesla.buildType = () => extend(Turret.TurretBuild, tesla, {
+		// Внутренний таймер перезарядки, чтобы не зависеть от патронной логики игры
+		_reloadTimer: 0,
 
+		updateTile() {
+			this.super$updateTile();
+
+			// Проверяем, запитан ли блок энергией
+			if (!this.hasPower) return;
+
+			// Обрабатываем перезарядку
+			if (this._reloadTimer > 0) {
+				this._reloadTimer -= Time.delta;
+				return;
+			}
+
+			// Если турель готова стрелять и видит цель
 			if (this.target != null) {
 				let tx = this.target.getX();
 				let ty = this.target.getY();
 				let angle = this.angleTo(this.target);
 
-				// ЛУЧ 1: Пускаем основную молнию ИЗ ТУРЕЛИ ВО ВРАГА. 
-				// Задаем длину 18 сегментов. Радар Анукена зацепит цель на подлете, 
-				// дотянет луч до координат врага и нанесет ему первый урон.
+				// ЛУЧ 1: Основная молния из турели во врага
 				Lightning.create(this.team, Color.lightSkyBlue, 35, this.x, this.y, angle, 18);
 
-				// ЛУЧ 2: Чтобы ток не застрял, мы ПРИНУДИТЕЛЬНО создаем цепной всплеск ИЗ САМОГО ВРАГА.
-				// Передаем координаты цели (tx, ty) и пускаем молнию на 8 сегментов вперед по ходу движения.
-				// Так как расстояние до цели равно 0, все 8 сегментов пойдут строго на прыжки по соседям!
+				// ЛУЧ 2: Гарантированный цепной всплеск из самого врага по соседям
 				Lightning.create(this.team, Color.lightSkyBlue, 25, tx, ty, angle, 8);
 				
 				Sounds.spark.at(this.x, this.y);
+
+				// Сбрасываем таймер перезарядки
+				this._reloadTimer = tesla.reload;
 			}
 		}
 	});
