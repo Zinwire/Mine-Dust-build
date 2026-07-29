@@ -152,7 +152,7 @@ try{
 		range: 8 * 20,
 		reload: 20,
 		targetAir: true,
-		category: Category.turret
+		category: Category.turret,
 
 		init(){
 			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
@@ -173,31 +173,31 @@ try{
 		shoot(type){
 			this.super$shoot(type);
 
-			damage = 20;
+			let damage = 20;
 
 			if (this.isControlled()) {
-    			shootX = this.targetPos.x;
-    			shootY = this.targetPos.y;
+    			let shootX = this.targetPos.x;
+    			let shootY = this.targetPos.y;
 			} else if (this.target != null){
-				shootX = this.target.getX();
-				shootY = this.target.getY();
+				let shootX = this.target.getX();
+				let shootY = this.target.getY();
 			} else{
-				shootX = this.x + Angles.trnsx(this.rotation, this.range());
-    			shootY = this.y + Angles.trnsy(this.rotation, this.range());
+				let shootX = this.x + Angles.trnsx(this.rotation, this.range());
+    			let shootY = this.y + Angles.trnsy(this.rotation, this.range());
 			}
 
-			comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
+			let comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
 
 			cLightning(this.team, Color.sky, damage, this.x, this.y, this.rotation, comingRange + 1, 4);
 
 			//Добавить звук выстрела
 
-			currentTarget = this.target;
-			chainInt = 4;
-			chainRad = 2.5 * 8;
+			let currentTarget = this.target;
+			let chainInt = 4;
+			let chainRad = 2.5 * 8;
 
-			for(j = 1; j < chainInt; j++){
-				delay = j * 4;
+			for(let j = 1; j < chainInt; j++){
+				let delay = j * 4;
 
 				Time.run(delay, run(() => {
 
