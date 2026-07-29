@@ -153,7 +153,7 @@ try{
 		reload: 20,
 		targetAir: true,
 		category: Category.turret,
-		buildVisibility: BuildVisibility.shown;
+		buildVisibility: BuildVisibility.shown,
 
 		init(){
 			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
