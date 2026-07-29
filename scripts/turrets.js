@@ -153,6 +153,7 @@ try{
 		reload: 20,
 		targetAir: true,
 		category: Category.turret,
+		buildVisibility: BuildVisibility.shown;
 
 		init(){
 			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
@@ -165,6 +166,8 @@ try{
 				smokeEffect: Fx.none,
 				hitEffect: Fx.none,
 				despawnEffect: Fx.none
+
+				this.super$init()
 			});
 		}
 	});
