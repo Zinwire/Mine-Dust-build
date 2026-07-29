@@ -1,4 +1,5 @@
-let logger = require("libs/logger");
+const logger = require("libs/logger");
+const cLightning = require("libs/customLightning");
 
 //Собрал все турели в один файл для удобства
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
@@ -142,67 +143,96 @@ try{
 
 //md-tesla / Тесла
 try{
-		// md-tesla / Турель Тесла
+	
 	const tesla = extend(PowerTurret, "tesla", {
-		description: "An advanced electric turret that strikes a target and unleashes a cascading chain of lightning. [W.I.P.]",
-		health: 1200,
+
+		//json параметры
 		size: 2,
-		range: 160, 
-		reload: 50,  
+		health: 10,
+		range: 8 * 20,
+		reload: 20,
 		targetAir: true,
-		targetGround: true,
-		hasPower: true,
-		recoil: 0,   
-		category: Category.turret,
-		buildVisibility: BuildVisibility.shown,
+		category: Category.turret
 
-		init() {
-			this.requirements = ItemStack.with(
-				Items.silicon, 80,
-				Items.titanium, 60,
-				Vars.content.getByName(ContentType.item, "md-Steel") || Items.graphite, 50
-			);
+		init(){
+			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
 
-			// Задаем потребление энергии (6 единиц в тик)
-			this.consumePower(6.0);
-
-			// ИСПРАВЛЕНО: Создаем пулю через LightningBulletType. 
-			// Для PowerTurret это легальный тип пули, peekAmmo() не вернет null и игра НЕ крашнется!
-			this.shootType = extend(LightningBulletType, {
-				damage: 0,              // Наша основная пуля наносит 0 урона
-				lightningLength: 1,     // Делаем визуальный луч невидимым
-				lightningLengthRand: 0,
-				shootEffect: Fx.lightningCharge,
+			this.shootType = extend(BasicBulletType, {
+				damage: 0,
+				lifetime: 0,
+				speed: 0,
+				shootEffect: Fx.none,
 				smokeEffect: Fx.none,
 				hitEffect: Fx.none,
 				despawnEffect: Fx.none
 			});
-
-			this.super$init();
 		}
 	});
-
 	tesla.buildType = () => extend(PowerTurret.PowerTurretBuild, tesla, {
-		// ИСПРАВЛЕНО: Используем правильную Java-перегрузку метода shoot для зданий на карте!
-		// В Java у здания сигнатура: void shoot(BulletType type)
-		shoot(type) {
-			this.super$shoot(type); // Запускаем базовую вспышку на стволе
 
-			// Поскольку это PowerTurret, таргет-система игры теперь РАБОТАЕТ и находит врагов!
-			if (this.target != null) {
-				let tx = this.target.getX();
-				let ty = this.target.getY();
-				let angle = this.angleTo(this.target);
+		shoot(type){
+			this.super$shoot(type);
 
-				// ЛУЧ 1: Основная молния из турели во врага (18 сегментов)
-				Lightning.create(this.team, Color.sky, 35, this.x, this.y, angle, 18);
+			damage = 20;
 
-				// ЛУЧ 2: Цепной веер молний из самого врага по его соседям (8 сегментов)
-				Lightning.create(this.team, Color.sky, 25, tx, ty, angle, 8);
-				
-				//Sounds.spark.at(this.x, this.y);
+			if (this.isControlled()) {
+    			shootX = this.targetPos.x;
+    			shootY = this.targetPos.y;
+			} else if (this.target != null){
+				shootX = this.target.getX();
+				shootY = this.target.getY();
+			} else{
+				shootX = this.x + Angles.trnsx(this.rotation, this.range());
+    			shootY = this.y + Angles.trnsy(this.rotation, this.range());
 			}
+
+			comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
+
+			cLightning(this.team, Color.sky, damage, this.x, this.y, this.rotation, comingRange + 1, 4);
+
+			//Добавить звук выстрела
+
+			currentTarget = this.target;
+			chainInt = 4;
+			chainRad = 2.5 * 8;
+
+			for(j = 1; j < chainInt; j++){
+				delay = j * 4;
+
+				Time.run(delay, run(() => {
+
+					if (this.dead || currentTarget == null || currentTarget.dead) return;
+
+					let fromX = currentTarget.getX();
+					let fromY = currentTarget.getY();
+
+
+					// Фиксируем типы Java-float для стабильности радара
+					let jX = java.lang.Float.valueOf(fromX);
+					let jY = java.lang.Float.valueOf(fromY);
+					let jRadius = java.lang.Float.valueOf(chainRad);
+
+					let nextTarget = Units.closestEnemy(this.team, jX, jY, jRadius, boolf(u => !u.dead && u != currentTarget));
+
+					
+					if (nextTarget != null) {
+						damage = damage * 0.8; // Затухание тока на 20%
+						
+						// Вычисляем угол от старого врага к новому
+						let jumpAngle = Packages.arc.math.Angles.angle(fromX, fromY, nextTarget.getX(), nextTarget.getY());
+
+						// ПУСКАЕМ СЛЕДУЮЩУЮ МОЛНИЮ ИЗ ТЕЛА СТАРОГО ВРАГА В НОВОГО
+						// Ставим длину 6 блоков, так как враги обычно стоят кучно
+						customTeslaLightning(this.team, Color.sky, currentDamage, fromX, fromY, jumpAngle, chainRad, 4);
+
+						// Переключаем указатель: теперь этот новый враг станет источником для следующего прыжка!
+						currentTarget = nextTarget;
+					}
+				}));
+			}
+
 		}
+
 	});
 
 }catch(e){
