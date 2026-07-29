@@ -177,16 +177,18 @@ try{
 			this.super$shoot(type);
 
 			let damage = 20;
+			let shootX;
+			let shootY;
 
 			if (this.isControlled()) {
-    			let shootX = this.targetPos.x;
-    			let shootY = this.targetPos.y;
+    			shootX = this.targetPos.x;
+    			shootY = this.targetPos.y;
 			} else if (this.target != null){
-				let shootX = this.target.getX();
-				let shootY = this.target.getY();
+				shootX = this.target.getX();
+				shootY = this.target.getY();
 			} else{
-				let shootX = this.x + Angles.trnsx(this.rotation, this.range());
-    			let shootY = this.y + Angles.trnsy(this.rotation, this.range());
+				shootX = this.x + Angles.trnsx(this.rotation, this.range());
+    			shootY = this.y + Angles.trnsy(this.rotation, this.range());
 			}
 
 			let comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
@@ -226,7 +228,7 @@ try{
 
 						// ПУСКАЕМ СЛЕДУЮЩУЮ МОЛНИЮ ИЗ ТЕЛА СТАРОГО ВРАГА В НОВОГО
 						// Ставим длину 6 блоков, так как враги обычно стоят кучно
-						customTeslaLightning(this.team, Color.sky, currentDamage, fromX, fromY, jumpAngle, chainRad, 4);
+						cLightning(this.team, Color.sky, damage, fromX, fromY, jumpAngle, 2.5, 4);
 
 						// Переключаем указатель: теперь этот новый враг станет источником для следующего прыжка!
 						currentTarget = nextTarget;
