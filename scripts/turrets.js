@@ -166,9 +166,9 @@ try{
 				smokeEffect: Fx.none,
 				hitEffect: Fx.none,
 				despawnEffect: Fx.none
-
-				this.super$init()
 			});
+
+			this.super$init()
 		}
 	});
 	tesla.buildType = () => extend(PowerTurret.PowerTurretBuild, tesla, {
