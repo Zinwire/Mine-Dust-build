@@ -193,7 +193,7 @@ try{
 
 			let comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
 
-			cLightning(this.team, Color.sky, damage, this.x, this.y, this.rotation, comingRange + 1, 4);
+			cLightning.customLightning(this.team, Color.sky, damage, this.x, this.y, this.rotation, comingRange + 1, 4);
 
 			//Добавить звук выстрела
 
@@ -228,7 +228,7 @@ try{
 
 						// ПУСКАЕМ СЛЕДУЮЩУЮ МОЛНИЮ ИЗ ТЕЛА СТАРОГО ВРАГА В НОВОГО
 						// Ставим длину 6 блоков, так как враги обычно стоят кучно
-						cLightning(this.team, Color.sky, damage, fromX, fromY, jumpAngle, 2.5, 4);
+						cLightning.customLightning(this.team, Color.sky, damage, fromX, fromY, jumpAngle, 2.5, 4);
 
 						// Переключаем указатель: теперь этот новый враг станет источником для следующего прыжка!
 						currentTarget = nextTarget;
