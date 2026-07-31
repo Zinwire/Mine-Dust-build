@@ -1,5 +1,5 @@
 const logger = require("libs/logger");
-const cLightning = require("libs/AcustomLightning");
+const cLightning = require("libs/customLightning");
 
 //Собрал все турели в один файл для удобства
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");

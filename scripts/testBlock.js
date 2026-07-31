@@ -8,13 +8,14 @@ try{
 
 	const testBlock = extend(Wall, "tw", {
 
+		description: "A test block. Sandbox Only",
 		health: 1,
 		size: 2,
 		category: Category.effect,
 
 		//Так как тестовый блок, показ выключен
 		//раскомментировать строку ниже для включения блока в игру
-		//buildVisibility: BuildVisibility.shown,
+		buildVisibility: BuildVisibility.sandboxOnly,
 
 		configurable: true, //В теории, блок может быть настраиваемым
 
