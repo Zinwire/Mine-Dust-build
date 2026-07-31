@@ -128,7 +128,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
             if (wallTile.build != null) {
                 wallTile.build.damage(team, damage);
             }
-            Fx.hitLase.at(targetX, targetY, color);
+            Fx.none.at(targetX, targetY, color);
             break; // Заземление! Цепочка полностью прерывается
 
         } else if (targetUnit != null) {
