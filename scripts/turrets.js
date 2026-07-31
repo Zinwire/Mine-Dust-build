@@ -165,7 +165,7 @@ try{
         	// ДОБАВЛЯЕМ СВОИ СТРОКИ И ПЕРЕПИСЫВАЕМ СТАРЫЕ
         	// Переписываем Разброс в категорию "Действие" (StatCat.function) со своим значением
         	// Вместо градуса можем написать любое кастомное пояснение или число
-        	this.stats.add(Stat.inaccuracy, extend(Packages.mindustry.world.meta.StatValues.StringValue, {
+        	this.stats.add(Stat.inaccuracy, extend(Packages.mindustry.world.meta.values.StringValue, {
     			add(table) {
         		// Добавляет текст в таблицу интерфейса
         		table.add(Core.bundle.get("block.md-tesla.dontmiss")); //Кор.бандл.гет() это функция для получения бандла по ключу
