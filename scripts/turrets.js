@@ -5,11 +5,6 @@ const cLightning = require("libs/customLightning");
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
 logger.fileRead("turrets.js");
 
-const teslaShootSound = new Sound(); //Объект звука
-			// Копируем аудиофайл из ванильной турели Arc
-			teslaShootSound.path = Blocks.arc.shootSound.path; 
-			// Выставляем питч 0.75
-			teslaShootSound.pitch = 0.75; 
 
 //md-cannon / Пушка
 try{
@@ -223,6 +218,8 @@ try{
         	let baseAngle = this.rotation;
 
         	teslaShootSound.at(this.x, this.y, 0.8, 1);
+
+        	Blocks.arc.shootSound.at(this.x, this.y, 0.75 + Packages.arc.math.Mathf.range(0.05), 1);
 
         	cLightning.customLightning(
         		this.team, 
