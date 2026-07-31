@@ -167,7 +167,7 @@ try{
         	// Вместо градуса можем написать любое кастомное пояснение или число
         	this.stats.add(
             	new Stat("customInaccuracy", StatCat.function), 
-            	new Packages.mindustry.world.meta.values.StringValue(Core.bundle.get("block.md-tesla.dontmiss"))
+            	StatValues.string(Core.bundle.get("block.md-tesla.dontmiss"))
         	);
 	
         	// StatCat.function - это категория "Действие" в меню
