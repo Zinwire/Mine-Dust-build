@@ -149,7 +149,7 @@ try{
 
 		//json параметры
 		size: 2,
-		health: 610,
+		health: 840,
 		range: 8 * 25,
 		reload: 60 / 5,
 		targetAir: true,
@@ -194,7 +194,17 @@ try{
     	},
 
 		init(){
-			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
+			const steel = Vars.content.getByName(ContentType.item, "md-Steel");
+
+			this.requirements = ItemStack.with(
+				Items.lead, 120,
+				Items.silicon, 60,
+				Items.titanium, 80,
+				steel, 120
+				Items.thorium, 100 
+
+			);
+			this.consumePower(380 / 60); //Я не тупой, просто так легче понимать потребление энергии
 
 			this.shootType = extend(BasicBulletType, {
 				damage: 0,
@@ -215,21 +225,21 @@ try{
 		shoot(type){
 			this.super$shoot(type);
 
-			let damage = 20;
+			let damage = 35;
         	let baseAngle = this.rotation;
 
-        	Blocks.arc.shootSound.at(this.x, this.y, 0.75 + Packages.arc.math.Mathf.range(0.05), 1);
+        	Blocks.arc.shootSound.at(this.x, this.y, 0.75 + Packages.arc.math.Mathf.range(0.075), 1);
 
         	cLightning.customLightning(
-        		this.team, 
-        		Color.blue, 
-        		20, 
-        		this.x, 
+        		this.team, //Тима молнии
+        		Color.sky, //Цвет молнии
+        		35, //Урон молнии
+        		this.x, // Коорды "x" и "y" для спавна молнии
         		this.y, 
-        		baseAngle, 
+        		baseAngle, //Поворот молнии (0 это полное влево)
         		25, // Длина первой молнии (20 блоков, совпадает с дальностью турели)
         		4,  // Извилистость (maxWiggle)
-        		4   // Максимальное количество ударов (цепочка из 5 врагов)
+        		5   // Максимальное количество ударов (цепочка из 5 врагов)
     		);
 
 		}
