@@ -1,5 +1,5 @@
 const logger = require("libs/logger");
-const cLightning = require("libs/customLightning");
+const cLightning = require("libs/AcustomLightning");
 
 //Собрал все турели в один файл для удобства
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
@@ -177,64 +177,19 @@ try{
 			this.super$shoot(type);
 
 			let damage = 20;
-			let shootX;
-			let shootY;
+        	let baseAngle = this.rotation;
 
-			if (this.isControlled()) {
-    			shootX = this.targetPos.x;
-    			shootY = this.targetPos.y;
-			} else if (this.target != null){
-				shootX = this.target.getX();
-				shootY = this.target.getY();
-			} else{
-				shootX = this.x + Angles.trnsx(this.rotation, this.range());
-    			shootY = this.y + Angles.trnsy(this.rotation, this.range());
-			}
-
-			let comingRange = Math.sqrt(Math.pow(shootX - this.x, 2) + Math.pow(shootY - this.y, 2));
-
-			cLightning.customLightning(this.team, Color.sky, damage, this.x, this.y, this.rotation, comingRange + 1, 4);
-
-			//Добавить звук выстрела
-
-			let currentTarget = this.target;
-			let chainInt = 4;
-			let chainRad = 2.5 * 8;
-
-			for(let j = 1; j < chainInt; j++){
-				let delay = j * 4;
-
-				Time.run(delay, run(() => {
-
-					if (this.dead || currentTarget == null || currentTarget.dead) return;
-
-					let fromX = currentTarget.getX();
-					let fromY = currentTarget.getY();
-
-
-					// Фиксируем типы Java-float для стабильности радара
-					let jX = java.lang.Float.valueOf(fromX);
-					let jY = java.lang.Float.valueOf(fromY);
-					let jRadius = java.lang.Float.valueOf(chainRad);
-
-					let nextTarget = Units.closestEnemy(this.team, jX, jY, jRadius, boolf(u => !u.dead && u != currentTarget));
-
-					
-					if (nextTarget != null) {
-						damage = damage * 0.8; // Затухание тока на 20%
-						
-						// Вычисляем угол от старого врага к новому
-						let jumpAngle = Packages.arc.math.Angles.angle(fromX, fromY, nextTarget.getX(), nextTarget.getY());
-
-						// ПУСКАЕМ СЛЕДУЮЩУЮ МОЛНИЮ ИЗ ТЕЛА СТАРОГО ВРАГА В НОВОГО
-						// Ставим длину 6 блоков, так как враги обычно стоят кучно
-						cLightning.customLightning(this.team, Color.sky, damage, fromX, fromY, jumpAngle, 2.5, 4);
-
-						// Переключаем указатель: теперь этот новый враг станет источником для следующего прыжка!
-						currentTarget = nextTarget;
-					}
-				}));
-			}
+        	cLightning.customLightning(
+        		this.team, 
+        		Color.sky, 
+        		damage, 
+        		this.x, 
+        		this.y, 
+        		baseAngle, 
+        		20, // Длина первой молнии (20 блоков, совпадает с дальностью турели)
+        		4,  // Извилистость (maxWiggle)
+        		5   // Максимальное количество ударов (цепочка из 5 врагов)
+    		);
 
 		}
 
