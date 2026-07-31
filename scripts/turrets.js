@@ -150,10 +150,25 @@ try{
 		size: 2,
 		health: 10,
 		range: 8 * 20,
-		reload: 20,
+		reload: 60 / 5,
 		targetAir: true,
 		category: Category.turret,
 		buildVisibility: BuildVisibility.shown,
+
+		setStats() {
+        this.super$setStats(); // Сохраняем базовые параметры (прочность, размер и т.д.)
+
+        // StatCat.function — это категория "Действие" в меню
+        // Добавляем строку: Урон цепной молнии
+        this.stats.add(Stat.damage, 20, StatUnit.none);
+
+        // Добавляем кастомную строку для количества прыжков
+        // Ипользуем созданную вручную Stat-метрику, чтобы игра вывела красивый текст
+        this.stats.add(new Stat("customMaxHits", StatCat.function), 5, StatUnit.none);
+
+        // Показываем радиус прыжка тока (10 блоков)
+        this.stats.add(new Stat("customBounceRadius", StatCat.function), 10, StatUnit.blocks);
+    	},
 
 		init(){
 			this.requirements = ItemStack.with(Items.copper, 1); //Доработать позже
