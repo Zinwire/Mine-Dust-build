@@ -181,8 +181,8 @@ try{
 
         	cLightning.customLightning(
         		this.team, 
-        		Color.sky, 
-        		damage, 
+        		Color.scarlet, 
+        		5000, 
         		this.x, 
         		this.y, 
         		baseAngle, 
