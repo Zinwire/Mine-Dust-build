@@ -5,6 +5,12 @@ const cLightning = require("libs/customLightning");
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
 logger.fileRead("turrets.js");
 
+const teslaShootSound = new Sound(); //Объект звука
+			// Копируем аудиофайл из ванильной турели Arc
+			teslaShootSound.path = Blocks.arc.shootSound.path; 
+			// Выставляем питч 0.75
+			teslaShootSound.pitch = 0.75; 
+
 //md-cannon / Пушка
 try{
 
@@ -148,8 +154,8 @@ try{
 
 		//json параметры
 		size: 2,
-		health: 10,
-		range: 8 * 20,
+		health: 610,
+		range: 8 * 25,
 		reload: 60 / 5,
 		targetAir: true,
 		category: Category.turret,
@@ -216,14 +222,16 @@ try{
 			let damage = 20;
         	let baseAngle = this.rotation;
 
+        	teslaShootSound.at(this.x, this.y, 0.8, 1);
+
         	cLightning.customLightning(
         		this.team, 
         		Color.scarlet, 
-        		5000, 
+        		20, 
         		this.x, 
         		this.y, 
         		baseAngle, 
-        		20, // Длина первой молнии (20 блоков, совпадает с дальностью турели)
+        		25, // Длина первой молнии (20 блоков, совпадает с дальностью турели)
         		4,  // Извилистость (maxWiggle)
         		4   // Максимальное количество ударов (цепочка из 5 врагов)
     		);
