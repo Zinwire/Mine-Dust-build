@@ -83,7 +83,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
             Bullets.damageLightning.create(null, team, wallX, wallY, angleToWall, damage, 1, 1, null);
             
             // Визуальный эффект заземления (вспышка лазера на постройке)
-            Fx.hitLase.at(wallX, wallY, color);
+            Fx.none.at(wallX, wallY, color);
             
             break; // ЦЕПЬ ОБРЫВАЕТСЯ: молния ушла в заземление через стену!
         }
