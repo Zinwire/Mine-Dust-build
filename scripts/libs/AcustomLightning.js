@@ -1,5 +1,3 @@
-//Я ебучий вайбкодер
-
 // Функция отрисовки визуальной линии молнии между двумя точками
 function drawLightningLine(color, startX, startY, endX, endY, maxWiggle) {
     let lines = new Packages.arc.struct.Seq();
@@ -20,7 +18,7 @@ function drawLightningLine(color, startX, startY, endX, endY, maxWiggle) {
     Fx.lightning.at(endX, endY, baseAngle, color, lines);
 }
 
-// ПЕРЕДЕЛАННАЯ ФУНКЦИЯ ЦЕПНОЙ МОЛНИИ С ЗАЗЕМЛЕНИЕМ
+// ИСПРАВЛЕННАЯ ФУНКЦИЯ ЦЕПНОЙ МОЛНИИ
 function customTeslaLightning(team, color, damage, startX, startY, baseAngle, firstHitRangeBlocks, maxWiggle, maxHits) {
     let currentX = startX;
     let currentY = startY;
@@ -28,84 +26,124 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
     
     let hitTargets = new Set();
     let firstHitRangePixels = firstHitRangeBlocks * 8;
-    let bounceRadius = java.lang.Float.valueOf(80.0); // 10 блоков для прыжка
+    
+    // Радиус прыжка между юнитами (10 блоков) и радиус зацепа от линии первого луча (3 блока)
+    let bounceRadius = java.lang.Float.valueOf(80.0); 
+    let lineGrabRadius = java.lang.Float.valueOf(24.0); 
 
     for (let hit = 0; hit < maxHits; hit++) {
+        let targetX = currentX;
+        let targetY = currentY;
         let targetUnit = null;
-        let currentSearchRadius = (hit == 0) ? java.lang.Float.valueOf(firstHitRangePixels) : bounceRadius;
-
-        // 1. Ищем ближайшего юнита-врага
-        targetUnit = Units.closestEnemy(team, java.lang.Float.valueOf(currentX), java.lang.Float.valueOf(currentY), currentSearchRadius, boolf(u => {
-            return !u.dead && !hitTargets.has(u.id);
-        }));
-
-        let targetX = currentX + Packages.arc.math.Angles.trnsx(currentAngle, currentSearchRadius);
-        let targetY = currentY + Packages.arc.math.Angles.trnsy(currentAngle, currentSearchRadius);
-        let hasTargetUnit = false;
-
-        if (targetUnit != null) {
-            targetX = targetUnit.getX();
-            targetY = targetUnit.getY();
-            hasTargetUnit = true;
-        }
-
-        // 2. ПРОВЕРКА НА СТЕНЫ И ПОСТРОЙКИ (ЗАЗЕМЛЕНИЕ) через ванильный raycast мира
         let hitWall = false;
-        let wallX = targetX;
-        let wallY = targetY;
+        let wallTile = null;
 
-        // Попиксельно или поблочно проверяем луч от текущей точки до цели на наличие твердых блоков
-        Vars.world.raycast(
-            Packages.mindustry.core.World.toTile(currentX), 
-            Packages.mindustry.core.World.toTile(currentY), 
-            Packages.mindustry.core.World.toTile(targetX), 
-            Packages.mindustry.core.World.toTile(targetY), 
-            (tx, ty) => {
-                let tile = Vars.world.tile(tx, ty);
-                // Если блок твердый (solid) и принадлежит чужой команде (или это нейтральный камень/руда)
-                if (tile != null && tile.solid() && tile.team() != team) {
-                    hitWall = true;
-                    // Центрируем точку взрыва на блоке
-                    wallX = tx * Vars.tilesize + 4;
-                    wallY = ty * Vars.tilesize + 4;
-                    return true; // Прерываем луч, нашли ближайшую стену
+        if (hit == 0) {
+            // --- ПЕРВЫЙ ВЫСТРЕЛ: Строго по линии направления турели ---
+            let maxEndX = currentX + Packages.arc.math.Angles.trnsx(currentAngle, firstHitRangePixels);
+            let maxEndY = currentY + Packages.arc.math.Angles.trnsy(currentAngle, firstHitRangePixels);
+            
+            targetX = maxEndX;
+            targetY = maxEndY;
+
+            // 1. Проверяем, нет ли стены на пути прямой линии ствола
+            Vars.world.raycast(
+                Packages.mindustry.core.World.toTile(currentX), 
+                Packages.mindustry.core.World.toTile(currentY), 
+                Packages.mindustry.core.World.toTile(maxEndX), 
+                Packages.mindustry.core.World.toTile(maxEndY), 
+                (tx, ty) => {
+                    let tile = Vars.world.tile(tx, ty);
+                    if (tile != null && tile.solid() && tile.team() != team) {
+                        hitWall = true;
+                        wallTile = tile;
+                        targetX = tx * Vars.tilesize + 4;
+                        targetY = ty * Vars.tilesize + 4;
+                        return true; // Нашли стену, прерываем линию
+                    }
+                    return false;
                 }
-                return false;
-            }
-        );
+            );
 
-        if (hitWall) {
-            // Рисуем молнию строго до стены
-            drawLightningLine(color, currentX, currentY, wallX, wallY, maxWiggle);
+            // 2. Ищем юнита, который стоит ближе всего к ТРАЕКТОРИИ нашего луча
+            // Ищем в радиусе lineGrabRadius вокруг конечной или промежуточных точек
+            let checkDist = hitWall ? Packages.arc.math.Mathf.dst(currentX, currentY, targetX, targetY) : firstHitRangePixels;
             
-            // Наносим урон блоку стены (или постройке)
-            let angleToWall = Packages.arc.math.Angles.angle(currentX, currentY, wallX, wallY);
-            Bullets.damageLightning.create(null, team, wallX, wallY, angleToWall, damage, 1, 1, null);
-            
-            // Визуальный эффект заземления (вспышка лазера на постройке)
-            Fx.none.at(wallX, wallY, color);
-            
-            break; // ЦЕПЬ ОБРЫВАЕТСЯ: молния ушла в заземление через стену!
+            // Сканируем шагами по 16 пикселей вдоль луча, ищем врага рядом с линией
+            for (let d = 8; d <= checkDist; d += 16) {
+                let cx = currentX + Packages.arc.math.Angles.trnsx(currentAngle, d);
+                let cy = currentY + Packages.arc.math.Angles.trnsy(currentAngle, d);
+                
+                let u = Units.closestEnemy(team, java.lang.Float.valueOf(cx), java.lang.Float.valueOf(cy), lineGrabRadius, boolf(e => !e.dead));
+                if (u != null) {
+                    // Если нашли врага рядом с лучом ДО того, как луч врезался в стену — цепляем его!
+                    targetUnit = u;
+                    targetX = u.getX();
+                    targetY = u.getY();
+                    hitWall = false; // Отменяем попадание в стену, так как молния срикошетила в юнита
+                    break;
+                }
+            }
+
+        } else {
+            // --- ПОСЛЕДУЮЩИЕ ПРЫЖКИ: Обычный поиск в радиусе от прошлого врага ---
+            targetUnit = Units.closestEnemy(team, java.lang.Float.valueOf(currentX), java.lang.Float.valueOf(currentY), bounceRadius, boolf(u => {
+                return !u.dead && !hitTargets.has(u.id);
+            }));
+
+            if (targetUnit != null) {
+                targetX = targetUnit.getX();
+                targetY = targetUnit.getY();
+
+                // Проверяем стены между прыжками юнитов
+                Vars.world.raycast(
+                    Packages.mindustry.core.World.toTile(currentX), 
+                    Packages.mindustry.core.World.toTile(currentY), 
+                    Packages.mindustry.core.World.toTile(targetX), 
+                    Packages.mindustry.core.World.toTile(targetY), 
+                    (tx, ty) => {
+                        let tile = Vars.world.tile(tx, ty);
+                        if (tile != null && tile.solid() && tile.team() != team) {
+                            hitWall = true;
+                            wallTile = tile;
+                            targetX = tx * Vars.tilesize + 4;
+                            targetY = ty * Vars.tilesize + 4;
+                            return true;
+                        }
+                        return false;
+                    }
+                );
+            } else {
+                break; // Нет целей для прыжка — цепь обрывается
+            }
         }
 
-        // 3. ЕСЛИ СТЕНЫ НЕТ — ОБЫЧНЫЙУДАР ПО ЮНИТУ ИЛИ В ВОЗДУХ
-        if (hasTargetUnit) {
-            drawLightningLine(color, currentX, currentY, targetX, targetY, maxWiggle);
-            
+        // --- ОБРАБОТКА РЕЗУЛЬТАТА ШАГА ---
+        
+        // Рисуем линию молнии до вычисленной точки (стены, юнита или конца луча)
+        drawLightningLine(color, currentX, currentY, targetX, targetY, maxWiggle);
+
+        if (hitWall && wallTile != null) {
+            // Наносим гарантированный урон блоку напрямую через его build-объект
+            if (wallTile.build != null) {
+                wallTile.build.damage(team, damage);
+            }
+            Fx.hitLase.at(targetX, targetY, color);
+            break; // Заземление! Цепочка полностью прерывается
+
+        } else if (targetUnit != null) {
+            // Наносим урон юниту
             let angleToTarget = Packages.arc.math.Angles.angle(currentX, currentY, targetX, targetY);
             Bullets.damageLightning.create(null, team, targetX, targetY, angleToTarget, damage, 1, 1, null);
-
+            
             hitTargets.add(targetUnit.id);
 
-            // Переносим точку старта на текущего поджаренного врага для следующего прыжка
+            // Обновляем координаты для следующего прыжка цепочки
             currentX = targetX;
             currentY = targetY;
         } else {
-            // Холостой выстрел в воздух на первом шаге, если никого нет
-            if (hit == 0) {
-                drawLightningLine(color, currentX, currentY, targetX, targetY, maxWiggle);
-            }
-            break; // Нет целей и нет стен — цепь закончена
+            // Если это был первый шаг и мы никого/ничего не задели — молния просто улетела в воздух и погасла
+            break; 
         }
     }
 }
