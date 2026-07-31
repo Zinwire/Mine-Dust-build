@@ -166,7 +166,7 @@ try{
         	// Переписываем Разброс в категорию "Действие" (StatCat.function) со своим значением
         	// Вместо градуса можем написать любое кастомное пояснение или число
         	this.stats.add(
-            	new Stat("customInaccuracy", StatCat.function), 
+            	Stat.inaccuracy, 
             	StatValues.string(Core.bundle.get("block.md-tesla.dontmiss"))
         	);
 	
