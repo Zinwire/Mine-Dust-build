@@ -174,7 +174,7 @@ try{
         	// Добавляем строку: Урон цепной молнии
         	this.stats.add(
         		Stat.damage, 
-        		StatValues.string(Core.bundle.get("block.md.tesla.damagePts"))
+        		StatValues.string(Core.bundle.get("block.md-tesla.damagePts"))
         	);
 	
         	// Добавляем кастомную строку для количества прыжков
