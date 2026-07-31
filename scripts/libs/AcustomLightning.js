@@ -60,7 +60,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
             Packages.mindustry.core.World.toTile(currentY), 
             Packages.mindustry.core.World.toTile(targetX), 
             Packages.mindustry.core.World.toTile(targetY), 
-            interface((tx, ty) => {
+            (tx, ty) => {
                 let tile = Vars.world.tile(tx, ty);
                 // Если блок твердый (solid) и принадлежит чужой команде (или это нейтральный камень/руда)
                 if (tile != null && tile.solid() && tile.team() != team) {
@@ -71,7 +71,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                     return true; // Прерываем луч, нашли ближайшую стену
                 }
                 return false;
-            })
+            }
         );
 
         if (hitWall) {
