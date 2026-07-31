@@ -156,18 +156,32 @@ try{
 		buildVisibility: BuildVisibility.shown,
 
 		setStats() {
-        this.super$setStats(); // Сохраняем базовые параметры (прочность, размер и т.д.)
-
-        // StatCat.function — это категория "Действие" в меню
-        // Добавляем строку: Урон цепной молнии
-        this.stats.add(Stat.damage, 20, StatUnit.none);
-
-        // Добавляем кастомную строку для количества прыжков
-        // Ипользуем созданную вручную Stat-метрику, чтобы игра вывела красивый текст
-        this.stats.add(new Stat("customMaxHits", StatCat.function), 5, StatUnit.none);
-
-        // Показываем радиус прыжка тока (10 блоков)
-        this.stats.add(new Stat("customBounceRadius", StatCat.function), 10, StatUnit.blocks);
+        	this.super$setStats(); // Исполняем базовые поля
+	
+        	//Удаляем лишние поля
+        	this.stats.remove(Stat.inaccuracy); 
+        	this.stats.remove(Stat.ammo); 
+	
+        	// ДОБАВЛЯЕМ СВОИ СТРОКИ И ПЕРЕПИСЫВАЕМ СТАРЫЕ
+        	// Переписываем Разброс в категорию "Действие" (StatCat.function) со своим значением
+        	// Вместо градуса можем написать любое кастомное пояснение или число
+        	this.stats.add(Stat.inaccuracy, extend(Packages.mindustry.world.meta.StatValues.StringValue, {
+    			add(table) {
+        		// Добавляет текст в таблицу интерфейса
+        		table.add(Core.bundle.get("block.md-tesla.dontmiss")); //Кор.бандл.гет() это функция для получения бандла по ключу
+    		}
+			}));
+	
+        	// StatCat.function - это категория "Действие" в меню
+        	// Добавляем строку: Урон цепной молнии
+        	this.stats.add(Stat.damage, 20, StatUnit.none);
+	
+        	// Добавляем кастомную строку для количества прыжков
+        	// Иcпользуем созданную вручную Stat-метрику, чтобы игра вывела нормальный текст
+        	this.stats.add(new Stat("customMaxHits", StatCat.function), 4, StatUnit.none);
+	
+        	// Показываем радиус прыжка тока (10 блоков)
+        	this.stats.add(new Stat("customBounceRadius", StatCat.function), 10, StatUnit.blocks);
     	},
 
 		init(){
