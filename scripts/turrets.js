@@ -172,14 +172,24 @@ try{
 	
         	// StatCat.function - это категория "Действие" в меню
         	// Добавляем строку: Урон цепной молнии
-        	this.stats.add(Stat.damage, 20, StatUnit.none);
+        	this.stats.add(
+        		Stat.damage, 
+        		StatValues.string(Core.bundle.get("block.md.tesla.damagePts"))
+        	);
 	
         	// Добавляем кастомную строку для количества прыжков
         	// Иcпользуем созданную вручную Stat-метрику, чтобы игра вывела нормальный текст
-        	this.stats.add(new Stat("customMaxHits", StatCat.function), 4, StatUnit.none);
+        	this.stats.add(
+        		new Stat("customMaxHits", StatCat.function), 
+        		StatValues.string(Core.bundle.get("block.md-tesla.customMaxHits"))
+        	);
 	
         	// Показываем радиус прыжка тока (10 блоков)
-        	this.stats.add(new Stat("customBounceRadius", StatCat.function), 10, StatUnit.blocks);
+        	this.stats.add(
+        		new Stat("customBounceRadius", StatCat.function), 
+        		10, 
+        		StatUnit.blocks
+        	);
     	},
 
 		init(){
