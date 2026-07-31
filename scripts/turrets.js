@@ -200,10 +200,8 @@ try{
 				Items.lead, 120,
 				Items.silicon, 60,
 				Items.titanium, 80,
-				steel, 120
-				Items.thorium, 100 
-
-			);
+				steel, 120,
+				Items.thorium, 100);
 			this.consumePower(380 / 60); //Я не тупой, просто так легче понимать потребление энергии
 
 			this.shootType = extend(BasicBulletType, {
