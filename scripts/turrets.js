@@ -165,12 +165,10 @@ try{
         	// ДОБАВЛЯЕМ СВОИ СТРОКИ И ПЕРЕПИСЫВАЕМ СТАРЫЕ
         	// Переписываем Разброс в категорию "Действие" (StatCat.function) со своим значением
         	// Вместо градуса можем написать любое кастомное пояснение или число
-        	this.stats.add(Stat.inaccuracy, extend(Packages.mindustry.world.meta.values.StringValue, {
-    			add(table) {
-        		// Добавляет текст в таблицу интерфейса
-        		table.add(Core.bundle.get("block.md-tesla.dontmiss")); //Кор.бандл.гет() это функция для получения бандла по ключу
-    		}
-			}));
+        	this.stats.add(
+            	new Stat("customInaccuracy", StatCat.function), 
+            	new Packages.mindustry.world.meta.values.StringValue(Core.bundle.get("block.md-tesla.dontmiss"))
+        	);
 	
         	// StatCat.function - это категория "Действие" в меню
         	// Добавляем строку: Урон цепной молнии
