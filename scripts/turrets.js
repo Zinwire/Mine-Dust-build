@@ -203,7 +203,8 @@ try{
 				shootEffect: Fx.none,
 				smokeEffect: Fx.none,
 				hitEffect: Fx.none,
-				despawnEffect: Fx.none
+				despawnEffect: Fx.none,
+				shootSound: Sounds.none
 			});
 
 			this.super$init()
@@ -216,8 +217,6 @@ try{
 
 			let damage = 20;
         	let baseAngle = this.rotation;
-
-        	teslaShootSound.at(this.x, this.y, 0.8, 1);
 
         	Blocks.arc.shootSound.at(this.x, this.y, 0.75 + Packages.arc.math.Mathf.range(0.05), 1);
 
