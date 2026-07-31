@@ -226,7 +226,7 @@ try{
 
         	cLightning.customLightning(
         		this.team, 
-        		Color.scarlet, 
+        		Color.blue, 
         		20, 
         		this.x, 
         		this.y, 
