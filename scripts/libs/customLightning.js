@@ -54,7 +54,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                 Packages.mindustry.core.World.toTile(maxEndY), 
                 (tx, ty) => {
                     let tile = Vars.world.tile(tx, ty);
-                    if (tile != null && tile.solid() && tile.team().isEnemy(team)) {
+                    if (tile != null && tile.solid() && tile.build != null && team.isEnemy(tile.team())) {
                         hitWall = true;
                         wallTile = tile;
                         targetX = tx * Vars.tilesize + 4;
@@ -103,7 +103,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                     Packages.mindustry.core.World.toTile(targetY), 
                     (tx, ty) => {
                         let tile = Vars.world.tile(tx, ty);
-                        if (tile != null && tile.solid() && tile.team.isEnemy(team)) {
+                        if (tile != null && tile.solid() && tile.build != null && team.isEnemy(tile.team())) {
                             hitWall = true;
                             wallTile = tile;
                             targetX = tx * Vars.tilesize + 4;
