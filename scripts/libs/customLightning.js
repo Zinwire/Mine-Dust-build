@@ -55,11 +55,16 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                 (tx, ty) => {
                     let tile = Vars.world.tile(tx, ty);
                     if (tile != null && tile.solid() && tile.build != null) {
-                        hitWall = true;
-                        wallTile = tile;
-                        targetX = tx * Vars.tilesize + 4;
-                        targetY = ty * Vars.tilesize + 4;
-                        return true; // Нашли стену, прерываем линию
+
+                        let tileTeam = tile.team();
+
+                        if(tileTeam != team){
+                            hitWall = true;
+                            wallTile = tile;
+                            targetX = tx * Vars.tilesize + 4;
+                            targetY = ty * Vars.tilesize + 4;
+                            return true; // Нашли стену, прерываем линию
+                        }
                     }
                     return false;
                 }
@@ -104,11 +109,17 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                     (tx, ty) => {
                         let tile = Vars.world.tile(tx, ty);
                         if (tile != null && tile.solid() && tile.build != null) {
-                            hitWall = true;
-                            wallTile = tile;
-                            targetX = tx * Vars.tilesize + 4;
-                            targetY = ty * Vars.tilesize + 4;
-                            return true;
+
+                            let tileTeam = tile.team();
+
+                            if(tileTeam != team){
+
+                                hitWall = true;
+                                wallTile = tile;
+                                targetX = tx * Vars.tilesize + 4;
+                                targetY = ty * Vars.tilesize + 4;
+                                return true;
+                            }
                         }
                         return false;
                     }
