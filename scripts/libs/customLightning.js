@@ -18,7 +18,7 @@ function drawLightningLine(color, startX, startY, endX, endY, maxWiggle) {
     Fx.lightning.at(endX, endY, baseAngle, color, lines);
 }
 
-// ИСПРАВЛЕННАЯ ФУНКЦИЯ ЦЕПНОЙ МОЛНИИ
+// Сама функция молнии
 function customTeslaLightning(team, color, damage, startX, startY, baseAngle, firstHitRangeBlocks, maxWiggle, maxHits) {
     let currentX = startX;
     let currentY = startY;
@@ -54,7 +54,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                 Packages.mindustry.core.World.toTile(maxEndY), 
                 (tx, ty) => {
                     let tile = Vars.world.tile(tx, ty);
-                    if (tile != null && tile.solid() && tile.team() != team) {
+                    if (tile != null && tile.solid() && tile.team().isEnemy(team)) {
                         hitWall = true;
                         wallTile = tile;
                         targetX = tx * Vars.tilesize + 4;
@@ -103,7 +103,7 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
                     Packages.mindustry.core.World.toTile(targetY), 
                     (tx, ty) => {
                         let tile = Vars.world.tile(tx, ty);
-                        if (tile != null && tile.solid() && tile.team() != team) {
+                        if (tile != null && tile.solid() && tile.team.isEnemy(team)) {
                             hitWall = true;
                             wallTile = tile;
                             targetX = tx * Vars.tilesize + 4;
