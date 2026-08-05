@@ -1,5 +1,6 @@
 const logger = require("libs/logger");
 const cLightning = require("libs/customLightning");
+const STATS = require("STATS/turretsSTATS");
 
 //Собрал все турели в один файл для удобства
 //Log.info("[green][md][] [blue]Файл turrets.js запущен[]");
@@ -9,11 +10,15 @@ logger.fileRead("turrets.js");
 //md-cannon / Пушка
 try{
 
+	const CANNON_health = STATS.cannon.health;
+	const CANNON_range = STATS.cannon.range;
+	const CANNON_reload = STATS.cannon.reload;
+
 	const cannon = extend(ItemTurret,"cannon", {
-		health: 800,
+		health: CANNON_health,
 		size: 3,
-		range: 27.5 * 8,
-		reload: 1.25 * 60,
+		range: CANNON_range * 8,
+		reload: CANNON_reload * 60,
 		targetAir: false,
 		targetGround: true,
 		ammoPerShot: 3,
@@ -144,14 +149,22 @@ try{
 
 //md-tesla / Тесла
 try{
+
+	const TESLA_damage = STATS.tesla.damage;
+	const TESLA_health = STATS.tesla.health;
+	const TESLA_range = STATS.tesla.range;
+	const TESLA_reload = STATS.tesla.range;
+	const TESLA_consumePower = STATS.tesla.consumePower;
+	const TESLA_maxHits = STATS.tesla.maxHits;
+	const TESLA_bounceRadius = STATS.tesla.bounceRadius;
 	
 	const tesla = extend(PowerTurret, "tesla", {
 
 		//json параметры
 		size: 2,
-		health: 840,
-		range: 8 * 25,
-		reload: 60 / 5,
+		health: TESLA_health,
+		range: TESLA_range * 8,
+		reload: TESLA_reload / 60,
 		targetAir: true,
 		category: Category.turret,
 		buildVisibility: BuildVisibility.shown,
@@ -175,20 +188,20 @@ try{
         	// Добавляем строку: Урон цепной молнии
         	this.stats.add(
         		Stat.damage, 
-        		StatValues.string(Core.bundle.get("block.md-tesla.damagePts"))
+        		StatValues.string(Core.bundle.format("stat.dmgPoints", TESLA_damage))
         	);
 	
         	// Добавляем кастомную строку для количества прыжков
         	// Иcпользуем созданную вручную Stat-метрику, чтобы игра вывела нормальный текст
         	this.stats.add(
         		new Stat("customMaxHits", StatCat.function), 
-        		StatValues.string(Core.bundle.get("block.md-tesla.customMaxHits"))
+        		StatValues.string(Core.bundle.format("stat.maxHits", TESLA_maxHits))
         	);
 	
         	// Показываем радиус прыжка тока (10 блоков)
         	this.stats.add(
         		new Stat("customBounceRadius", StatCat.function), 
-        		10, 
+        		TESLA_bounceRadius, 
         		StatUnit.blocks
         	);
     	},
@@ -231,7 +244,7 @@ try{
         	cLightning.customLightning(
         		this.team, //Тима молнии
         		Color.sky, //Цвет молнии
-        		35, //Урон молнии
+        		TESLA_damage, //Урон молнии
         		this.x, // Коорды "x" и "y" для спавна молнии
         		this.y, 
         		baseAngle, //Поворот молнии (0 это полное влево)

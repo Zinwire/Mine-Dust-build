@@ -25,6 +25,7 @@
 		"coolant": {
 			"amount": 0.3, //18/сек
 			"optional": false,
+			"booster": false
 		}
 	},
 	"shootType": {
