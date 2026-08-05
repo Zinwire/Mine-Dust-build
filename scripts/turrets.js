@@ -153,7 +153,7 @@ try{
 	const TESLA_damage = STATS.tesla.damage;
 	const TESLA_health = STATS.tesla.health;
 	const TESLA_range = STATS.tesla.range;
-	const TESLA_reload = STATS.tesla.range;
+	const TESLA_reload = STATS.tesla.reload;
 	const TESLA_consumePower = STATS.tesla.consumePower;
 	const TESLA_maxHits = STATS.tesla.maxHits;
 	const TESLA_bounceRadius = STATS.tesla.bounceRadius;
