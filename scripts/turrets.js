@@ -208,12 +208,36 @@ try{
         	);
         	*/
 
-        	this.stats.add(Stat.ammo, StatValues.ammo( Packages.arc.struct.ObjectMap.of(
-        		
-        		"Урон", StatValues.string("[orange]" + TESLA_damage + "[]"),
-        		Core.bundle.get("stat.custommaxhits"), StatValues.string(Core.bundle.format("stat.maxHits", TESLA_maxHits)),
-        		Core.bundle.get("stat.custombounceradius"), StatValues.string(TESLA_bounceRadius)
-        	)));
+        	 this.stats.add(Stat.ammo, extend(Packages.mindustry.world.meta.values.AmmoListValue, {
+            // Метод display строит внутренности нашей рамки, и игра сама сделает обводку!
+            display(table) {
+                table.row();
+                table.add("").width(10); // Аккуратный отступ слева под ванильный стиль
+
+                // Создаем простую текстовую таблицу
+                let contentTable = new Packages.arc.scene.ui.layout.Table();
+                contentTable.left();
+
+                // Строка 1: Урон
+                contentTable.row();
+                contentTable.add("[orange]" + TESLA_damage + "[] урон").left();
+
+                // Строка 2: Макс. цели (Берем из динамического бандла)
+                contentTable.row();
+                contentTable.add(Core.bundle.format("stat.custommaxhits", TESLA_maxHits)).left();
+
+                // Строка 3: Дальность прыжка
+                contentTable.row();
+                contentTable.add(Core.bundle.format("stat.custombounceradius", TESLA_bounceRadius)).left();
+
+                // Строка 4: Статус-эффект
+                contentTable.row();
+                contentTable.add("[sky]⚡[] Шок").left();
+
+                // Пакуем нашу готовую таблицу в рамку
+                table.add(contentTable).left().padLeft(4);
+            }
+        }));
     	},
 
 		init(){
