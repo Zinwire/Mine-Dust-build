@@ -7,14 +7,14 @@ const STATS = {
 	cannon: {
 		health: 800,
 		range: 27.5,
-		reload: 1.25, // ТУТ множитель для 60. Перезарядка в тиках
+		reload: 1.25,
 	},
 
 	tesla: {
 		damage: 35,
 		health: 840,
 		range: 25,
-		reload: 5, // ТУТ выстрелы в секунду
+		reload: 0.2,
 		consumePower: 380 / 60,
 		maxHits: 5,
 		bounceRadius: 10,

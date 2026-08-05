@@ -164,7 +164,7 @@ try{
 		size: 2,
 		health: TESLA_health,
 		range: TESLA_range * 8,
-		reload: TESLA_reload / 60,
+		reload: TESLA_reload * 60,
 		targetAir: true,
 		category: Category.turret,
 		buildVisibility: BuildVisibility.shown,
