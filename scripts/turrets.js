@@ -186,6 +186,8 @@ try{
 	
         	// StatCat.function - это категория "Действие" в меню
         	// Добавляем строку: Урон цепной молнии
+
+        	/*
         	this.stats.add(
         		Stat.damage, 
         		StatValues.string(Core.bundle.format("stat.dmgPoints", TESLA_damage))
@@ -204,6 +206,14 @@ try{
         		TESLA_bounceRadius, 
         		StatUnit.blocks
         	);
+        	*/
+
+        	this.stats.add(Stat.ammo, StatValues.ammo( Packages.arc.struct.ObjectMap.of(
+        		
+        		"Урон", StatValues.string("[orange]" + TESLA_damage + "[]"),
+        		Core.bundle.get("stat.custommaxhits"), StatValues.string(Core.bundle.format("stat.maxHits", TESLA_maxHits)),
+        		Core.bundle.get("stat.custombounceradius"), StatValues.string(TESLA_bounceRadius)
+        	)));
     	},
 
 		init(){
@@ -248,9 +258,9 @@ try{
         		this.x, // Коорды "x" и "y" для спавна молнии
         		this.y, 
         		baseAngle, //Поворот молнии (0 это полное влево)
-        		25, // Длина первой молнии (20 блоков, совпадает с дальностью турели)
+        		TESLA_range, // Длина первой молнии
         		4,  // Извилистость (maxWiggle)
-        		5   // Максимальное количество ударов (цепочка из 5 врагов)
+        		TESLA_maxHits   // Максимальное количество ударов (цепочка из 5 врагов)
     		);
 
 		}
