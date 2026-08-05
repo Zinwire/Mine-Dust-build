@@ -147,6 +147,8 @@ function customTeslaLightning(team, color, damage, startX, startY, baseAngle, fi
             let angleToTarget = Packages.arc.math.Angles.angle(currentX, currentY, targetX, targetY);
             Bullets.damageLightning.create(null, team, targetX, targetY, angleToTarget, damage, 1, 1, null);
             
+            targetUnit.apply(/*Packages.mindustry.content.*/StatusEffects.shocked, 60); //Добавляет эффект Shocked юнитам
+
             hitTargets.add(targetUnit.id);
 
             // Обновляем координаты для следующего прыжка цепочки

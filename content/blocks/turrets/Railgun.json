@@ -7,7 +7,7 @@
 	"reload": 240,
 	"rotateSpeed": 0.5,
 	"range": 240,
-	"shootSound": "railgun",
+	"shootSound": "shootForeshadow",
 	"requirements": [
 		"lead/220",
 		"Steel/110",
@@ -17,10 +17,14 @@
 	],
 	"consumes": {
 		"power": 14,
-		"liquids": {
+		/*"liquids": {
 			"liquids": [
 				{"liquid": "water", "amount": 0.3}
 			]
+		}*/
+		"coolant": {
+			"amount": 0.3, //18/сек
+			"optional": false,
 		}
 	},
 	"shootType": {

@@ -29,8 +29,11 @@
 		"width": 16,
 		"height": 16,
 		"backColor": "6666ff",
+		"despawnEffect": "none",
+		"hitEffect": "none",
 		"status": "burning",
-        	"statusDuration": 900,
+        	"statusDuration": 300,
+
 	},
 	"range": 130,
 	"health": 350,
