@@ -5,10 +5,10 @@
   "health": 500,
   "size": 3,
   "requirements": [
-    "lead/230"
-    "silicon/100"
-    "Diamond/70"
-    "thorium/150"
+    "lead/230",
+    "silicon/100",
+    "Diamond/70",
+    "thorium/150",
     "plastanium/50"
     "surge-alloy/25"
   ],
